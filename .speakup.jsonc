@@ -1,0 +1,10 @@
+{
+  "providers": {
+    "gemini": {
+      "title_voice": "Nova"
+    },
+    "elevenlabs": {
+      "title_voice": "n1PvBOwxb8X6m7tahp2h"
+    }
+  }
+}
