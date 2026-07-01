@@ -1,0 +1,29 @@
+---
+import AnchorHeading from "@components/AnchorHeading.astro";
+import VenueContent from "@prose/venue.mdx";
+
+const venuePhotos = [
+  "/venue/pjatk-outside-1.jpeg",
+  "/venue/pjatk-outside-2.jpeg",
+  "/venue/pjatk-inside-1.jpeg",
+  "/venue/pjatk-inside-2.jpeg",
+  "/venue/pjatk-inside-3.jpeg",
+  "/venue/pjatk-inside-4.jpeg",
+];
+---
+
+<section id="venue" class="section-sm text-center">
+  <AnchorHeading anchor="venue">Venue</AnchorHeading>
+  <div class="prose-content text-left [&_ul]:mt-2 [&_ul]:mb-6">
+    <VenueContent />
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
+    {venuePhotos.map((photo, i) => (
+      <img
+        src={photo}
+        alt={`PJAIT venue photo ${i + 1}`}
+        class="w-full block rounded-lg object-cover aspect-4/3"
+      />
+    ))}
+  </div>
+</section>

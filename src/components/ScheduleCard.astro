@@ -1,0 +1,138 @@
+---
+import { formatEventTime } from "@data/schedule";
+import SocialLink from "@components/SocialLink.astro";
+
+interface Link {
+  url: string;
+  icon: string;
+  label: string;
+}
+
+interface Speaker {
+  id: string;
+  name: string;
+  image?: string;
+  links?: Link[];
+}
+
+interface Event {
+  label?: string;
+  title?: string;
+  speakerIds?: string[];
+  when?: string;
+  until?: string;
+  isKeynote?: boolean;
+}
+
+interface Props {
+  event: Event;
+  speakers: Speaker[];
+  invert?: boolean;
+}
+
+const { event, speakers, invert = false } = Astro.props;
+
+const timeRange = event.when
+  ? event.until
+    ? `${formatEventTime(event.when)}-${formatEventTime(event.until)}`
+    : formatEventTime(event.when)
+  : null;
+
+const isInfo = Boolean(event.label);
+const photos = speakers.flatMap((s) =>
+  s.image ? [{ src: s.image, name: s.name }] : [],
+);
+const multiPhoto = photos.length > 1;
+---
+
+<div class="relative mt-12.5">
+  {isInfo ? (
+    <div
+      class="px-8 py-6 md:px-25 md:py-8 rounded-[2.4rem] md:rounded-full bg-primary text-white text-base md:text-xl text-center"
+      style="background-image: linear-gradient(45deg, transparent 25%, rgba(0,0,0,.05) 25%, rgba(0,0,0,.05) 50%, transparent 50%, transparent 75%, rgba(0,0,0,.05) 75%); background-size: 3rem 3rem; animation: bg-stripe 2s infinite linear;"
+    >
+      {event.label}
+    </div>
+  ) : (
+    <div
+      class:list={[
+        "rounded-[3.2rem] md:rounded-[4rem] shadow-[0_4px_28px_-8px_#cac9c9] p-6 md:p-10 flex flex-col md:gap-6",
+        event.isKeynote ? "border-[3px] border-primary shadow-[0_8px_32px_-12px_#ed4337]" : "border border-gray-100",
+        photos.length > 0 ? "md:grid md:items-center md:justify-items-center" : "",
+      ]}
+      style={photos.length > 0
+        ? `grid-template-columns: ${invert
+            ? `1fr ${multiPhoto ? "7.5rem" : "10.625rem"}`
+            : `${multiPhoto ? "7.5rem" : "10.625rem"} 1fr`}`
+        : ""}
+    >
+      {photos.length > 0 && (
+        <div
+          class:list={[
+            "relative flex items-center justify-center mb-4 md:mb-0",
+            multiPhoto ? "w-18 h-18 md:w-30 md:h-30" : "w-16 h-16 md:w-38 md:h-38",
+          ]}
+          style={invert ? "order: 2; grid-column: 2; grid-row: 1 / span 2" : "grid-column: 1; grid-row: 1 / span 2"}
+        >
+          {photos.map((photo, i) => (
+            <img
+              src={photo.src}
+              alt={photo.name}
+              class:list={[
+                "rounded-full object-cover",
+                multiPhoto
+                  ? "w-12 h-12 md:w-20 md:h-20 absolute border-[3px] border-white shadow-[2px_8px_24px_-8px_#ed4337]"
+                  : "w-full h-full avatar-shadow",
+              ]}
+              style={multiPhoto ? `top: ${i === 0 ? "0" : "1.5rem"}; left: ${i === 0 ? "0" : "1.5rem"}; z-index: ${photos.length - i}` : ""}
+            />
+          ))}
+        </div>
+      )}
+
+      <h2
+        class:list={[
+          "text-text font-mono font-medium text-lg md:text-xl leading-snug m-0 mb-3 md:mb-2 wrap-break-word",
+          photos.length > 0 && (invert ? "col-start-1" : "col-start-2"),
+        ]}
+      >
+        {event.title}
+      </h2>
+
+      <div
+        class:list={[
+          "flex flex-wrap items-center justify-center gap-3 text-sm md:text-xl",
+          photos.length > 0 && (invert ? "col-start-1" : "col-start-2"),
+        ]}
+      >
+        {event.isKeynote && (
+          <span class="text-primary font-mono text-base font-medium">Keynote speaker</span>
+        )}
+        {speakers.map((speaker) => (
+          <span class="inline-flex items-center gap-1 flex-wrap justify-center">
+            <span>{speaker.name}</span>
+            {speaker.links?.map((link) => (
+              <SocialLink
+                url={link.url}
+                icon={link.icon}
+                label={link.label}
+                ariaLabel={`${speaker.name} ${link.label}`}
+              />
+            ))}
+          </span>
+        ))}
+      </div>
+    </div>
+  )}
+
+  {timeRange && (
+    <span
+      class:list={[
+        "absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-3 py-[.35rem] rounded-full font-mono text-[0.8125rem] md:text-base whitespace-nowrap shadow-[0_4px_16px_-8px_#464444] z-10",
+        isInfo ? "bg-white text-primary" : "bg-primary text-white",
+      ]}
+    >
+      {timeRange}
+    </span>
+  )}
+</div>

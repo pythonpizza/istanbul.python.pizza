@@ -1,0 +1,39 @@
+---
+import { format } from "date-fns";
+import Wave from "@components/Wave.astro";
+import { site } from "@data/site";
+
+const dateStr = format(new Date(site.whenDatetime), site.whenFormat);
+---
+
+<section
+  class="relative flex flex-col items-center justify-center bg-[url('/city.png')] bg-center bg-cover min-h-screen pt-28 md:pt-40"
+>
+  <!-- Red overlay -->
+  <div class="hero-overlay absolute inset-0 bg-primary"></div>
+
+  <div class="relative z-10 m-auto p-8 text-center">
+    <h1 class="text-white text-[2.6rem] md:text-[5rem] font-mono font-medium text-center leading-tight mb-4">
+      {site.siteHeading}
+    </h1>
+    <p class="hero-subtext md:text-[2.2rem]">{site.subHeading}</p>
+    <p class="hero-subtext md:text-[2.2rem]">{dateStr}</p>
+    <a
+      href={site.ticketsUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="mt-10 inline-flex items-center gap-2 px-10 py-4 rounded-full border-2 border-white bg-white/15 text-white font-mono font-semibold text-lg md:text-xl backdrop-blur-sm hover:bg-white hover:text-primary hover:-translate-y-0.5 transition-all duration-300"
+    >
+      Buy tickets 🎫
+    </a>
+  </div>
+
+  <Wave />
+
+<style>
+  .hero-overlay { opacity: 0.6; }
+  @supports (mix-blend-mode: hard-light) {
+    .hero-overlay { opacity: 1; mix-blend-mode: hard-light; }
+  }
+</style>
+</section>

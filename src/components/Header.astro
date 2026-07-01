@@ -1,0 +1,120 @@
+---
+import Logo from "@components/Logo.astro";
+
+const menuItems = [
+  { href: "#about", label: "About 🍕" },
+  { href: "#cfp", label: "CFP 🙋🏻‍♀️" },
+  { href: "/compact-agenda/", label: "Compact agenda 🔗" },
+  { href: "#schedule", label: "Program 📅" },
+  { href: "#organizers", label: "Organizers 👩🏻" },
+  { href: "#venue", label: "Venue 🏰" },
+  { href: "#sponsors", label: "Sponsors 💛" },
+  { href: "#coc", label: "CoC 💂" },
+];
+---
+
+<header
+  id="site-header"
+  class="absolute top-0 left-0 w-full z-10 data-[menu-open=true]:z-30"
+>
+  <div class="flex items-center justify-between text-white px-8 py-6 max-w-240 mx-auto">
+    <Logo class="mr-10" />
+
+    <!-- Hamburger button (mobile) -->
+    <button
+      id="menu-toggle"
+      type="button"
+      aria-controls="mobile-menu"
+      aria-expanded="false"
+      aria-label="Open menu"
+      class="md:hidden relative z-40 w-[3.2rem] h-[3.2rem] flex items-center justify-center border border-white/65 rounded-full bg-primary/20 text-white cursor-pointer backdrop-blur-sm"
+    >
+      <span id="menu-icon" class="relative w-6 h-px rounded-full bg-white block transition-colors duration-200">
+        <span class="absolute left-0 w-6 h-px rounded-full bg-white block -top-2 transition-all duration-200"></span>
+        <span class="absolute left-0 w-6 h-px rounded-full bg-white block top-2 transition-all duration-200"></span>
+      </span>
+    </button>
+
+    <!-- Desktop nav -->
+    <nav class="hidden md:flex items-center gap-6">
+      {menuItems.map(({ href, label }) => (
+        <a
+          href={href}
+          class="text-white text-center relative bg-[linear-gradient(0deg,#fff_2px,transparent_0)] bg-no-repeat bg-position-[50%] bg-size-[0_100%] transition-[background-size] duration-300 ease-[cubic-bezier(.165,.84,.44,1)] hover:bg-size-[100%_100%] px-1 py-1 text-xl"
+        >
+          {label}
+        </a>
+      ))}
+    </nav>
+  </div>
+
+  <!-- Mobile menu overlay -->
+  <nav
+    id="mobile-menu"
+    aria-hidden="true"
+    class="md:hidden fixed inset-0 z-30 flex flex-col items-center justify-center px-8 py-20 text-white opacity-0 pointer-events-none -translate-y-2 transition-[opacity,transform] duration-200 ease-in-out"
+    style="background: url('/city.png') center/cover;"
+  >
+    <!-- Overlay tint -->
+    <div class="absolute inset-0 bg-primary opacity-80 pointer-events-none"></div>
+
+    <div class="relative z-10 mb-8">
+      <Logo />
+    </div>
+
+    <ul class="relative z-10 flex flex-col items-center gap-2 list-none m-0 p-0">
+      {menuItems.map(({ href, label }) => (
+        <li>
+          <a
+            href={href}
+            class="mobile-nav-link text-white text-2xl leading-tight py-2 block text-center hover:underline underline-offset-4"
+          >
+            {label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</header>
+
+<script>
+  const toggle = document.getElementById("menu-toggle")!;
+  const menu = document.getElementById("mobile-menu")!;
+  const icon = document.getElementById("menu-icon")!;
+  const header = document.getElementById("site-header")!;
+
+  let open = false;
+
+  function setOpen(next: boolean) {
+    open = next;
+    toggle.setAttribute("aria-expanded", String(next));
+    toggle.setAttribute("aria-label", next ? "Close menu" : "Open menu");
+    menu.setAttribute("aria-hidden", String(!next));
+    menu.classList.toggle("opacity-0", !next);
+    menu.classList.toggle("pointer-events-none", !next);
+    menu.classList.toggle("-translate-y-2", !next);
+    icon.classList.toggle("bg-transparent", next);
+    const bars = icon.querySelectorAll("span");
+    bars[0].classList.toggle("!top-0", next);
+    bars[0].classList.toggle("rotate-45", next);
+    bars[1].classList.toggle("!top-0", next);
+    bars[1].classList.toggle("-rotate-45", next);
+    document.body.style.overflow = next ? "hidden" : "";
+    header.dataset.menuOpen = String(next);
+  }
+
+  toggle.addEventListener("click", () => setOpen(!open));
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && open) setOpen(false);
+  });
+
+  // Close on nav link click
+  menu.querySelectorAll(".mobile-nav-link").forEach((link) => {
+    link.addEventListener("click", () => setOpen(false));
+  });
+
+  // Close when viewport goes desktop
+  const mq = window.matchMedia("(min-width: 48rem)");
+  mq.addEventListener("change", (e) => { if (e.matches) setOpen(false); });
+</script>

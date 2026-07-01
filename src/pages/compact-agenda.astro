@@ -1,0 +1,252 @@
+---
+import Base from "@layouts/Base.astro";
+import { getScheduleData, formatEventTime } from "@data/schedule";
+
+const { events, speakerMap } = await getScheduleData();
+
+const fmt = formatEventTime;
+const title = (e: (typeof events)[number]) => e.title ?? e.label ?? "";
+const speakerNames = (e: (typeof events)[number]) =>
+  e.speakerIds
+    ?.map((id) => speakerMap[id]?.name)
+    .filter(Boolean)
+    .join(", ") ?? "";
+---
+
+<Base
+  title="Agenda for May 9, 2026 | Warsaw Python Pizza"
+  description="Compact day-of agenda for Warsaw Python Pizza on May 9, 2026."
+>
+  <div
+    id="page"
+    class="min-h-screen bg-[#fffaf9] text-text"
+  >
+    <!-- Sticky header -->
+    <header
+      class="sticky top-0 z-10 grid items-center gap-2 border-b border-[#f2d1cd] bg-[rgba(255,250,249,.94)] backdrop-blur-md px-4 md:px-8 py-3"
+      style="grid-template-columns: 2.5rem 1fr 2.5rem"
+    >
+      <h1
+        class="m-0 text-text font-mono text-lg md:text-2xl leading-tight text-center"
+        style="grid-column: 2"
+      >
+        Agenda for Warsaw Python Pizza, May 9 2026
+      </h1>
+      <button
+        id="theme-toggle"
+        type="button"
+        aria-label="Switch to dark mode"
+        class="inline-flex items-center justify-center w-10 h-10 p-0 border border-primary rounded-full bg-white text-primary cursor-pointer"
+        style="grid-column: 3"
+      >
+        <!-- sun icon (shown in dark mode) -->
+        <img id="icon-sun" src="/icons/theme-sun.svg" alt="" aria-hidden="true" width="18" height="18" class="hidden" />
+        <!-- moon icon (shown in light mode) -->
+        <img id="icon-moon" src="/icons/theme-moon.svg" alt="" aria-hidden="true" width="18" height="18" />
+      </button>
+    </header>
+
+    <!-- Agenda list -->
+    <div class="max-w-4xl mx-auto px-4 md:px-8 pt-5 pb-24">
+      <ol id="agenda-list" class="list-none grid gap-2 m-0 p-0">
+        {events.map((event, i) => {
+          const speakers = speakerNames(event);
+          const t = title(event);
+          return (
+            <li
+              data-index={i}
+              data-when={event.when ?? ""}
+              data-until={event.until ?? ""}
+              class="agenda-item grid items-start gap-x-2 md:gap-x-3 rounded-lg border border-[#eee] bg-white px-3 md:px-3 py-3 md:py-2"
+              style="grid-template-columns: minmax(3.6rem,auto) minmax(0,1fr) auto; grid-template-rows: auto auto"
+            >
+              <span
+                class="time font-mono text-xs md:text-xs font-medium leading-tight text-primary whitespace-nowrap"
+                style="grid-column:1; grid-row:1"
+              >
+                {event.when ? fmt(event.when) : ""}
+              </span>
+
+              <div class="content min-w-0" style="grid-column: 1 / -1; grid-row: 2">
+                {speakers && (
+                  <span class="block text-[11px] leading-tight opacity-70 overflow-anywhere mb-1">
+                    {speakers}
+                  </span>
+                )}
+                <span class="block font-mono text-[13px] font-medium leading-snug overflow-anywhere">
+                  {t}
+                </span>
+              </div>
+
+              <span
+                class="badge hidden items-center justify-center min-w-12 md:min-w-14 font-mono text-[.9rem] font-medium leading-none uppercase py-[.2rem] px-[.45rem] rounded-full"
+                style="grid-column:3; grid-row:1"
+              >
+              </span>
+            </li>
+          );
+        })}
+      </ol>
+    </div>
+
+    <!-- Back to home button -->
+    <a
+      href="/"
+      aria-label="Go to home page"
+      class="fixed right-4 md:right-6 bottom-4 md:bottom-6 z-10 inline-flex items-center justify-center w-16 h-16 border border-primary rounded-full bg-white text-primary shadow-lg hover:-translate-y-0.5 transition-transform"
+    >
+      <img src="/icons/home.svg" alt="" aria-hidden="true" width="21" height="21" />
+    </a>
+  </div>
+</Base>
+
+<script>
+  const page = document.getElementById("page")!;
+  const list = document.getElementById("agenda-list")!;
+  const toggleBtn = document.getElementById("theme-toggle")!;
+  const iconSun = document.getElementById("icon-sun")!;
+  const iconMoon = document.getElementById("icon-moon")!;
+  const agendaHeader = document.querySelector<HTMLElement>("header")!;
+  const agendaH1 = agendaHeader.querySelector<HTMLElement>("h1")!;
+  const STORAGE_KEY = "compact-agenda-color-mode";
+
+  // --- Dark mode ---
+  type Mode = "light" | "dark";
+
+  function getInitialMode(): Mode {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored === "dark" || stored === "light") return stored;
+    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  }
+
+  function applyMode(mode: Mode) {
+    const dark = mode === "dark";
+    page.style.backgroundColor = dark ? "#161313" : "#fffaf9";
+    page.style.color = dark ? "#f8ebe8" : "#464444";
+
+    agendaHeader.style.backgroundColor = dark ? "rgba(22,19,19,.94)" : "rgba(255,250,249,.94)";
+    agendaHeader.style.borderBottomColor = dark ? "#3a2725" : "#f2d1cd";
+    agendaH1.style.color = dark ? "#f8ebe8" : "#464444";
+
+    iconSun.classList.toggle("hidden", !dark);
+    iconMoon.classList.toggle("hidden", dark);
+    toggleBtn.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+    toggleBtn.style.backgroundColor = dark ? "#241b1a" : "white";
+
+    // Update all items to reflect dark background base
+    list.querySelectorAll<HTMLElement>(".agenda-item").forEach((el) => {
+      if (!el.classList.contains("is-current") && !el.classList.contains("is-next")) {
+        el.style.borderColor = dark ? "#3a2725" : "#eee";
+        el.style.backgroundColor = dark ? "#201817" : "white";
+        el.style.color = dark ? "#f8ebe8" : "#464444";
+      }
+    });
+  }
+
+  let mode = getInitialMode();
+  applyMode(mode);
+
+  toggleBtn.addEventListener("click", () => {
+    mode = mode === "dark" ? "light" : "dark";
+    localStorage.setItem(STORAGE_KEY, mode);
+    applyMode(mode);
+    highlight(); // reapply highlight colours for new mode
+  });
+
+  // --- Time highlighting ---
+
+  // Parse highlightTime param once; fall back to real clock per tick
+  const fixedTime: number | null = (() => {
+    const param = new URLSearchParams(window.location.search).get("highlightTime");
+    if (!param) return null;
+    const normalised = param.match(/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}$/)
+      ? param.replace(" ", "T")
+      : param.replace(/ (\d{2}:\d{2})$/, "+$1");
+    const ms = new Date(normalised).getTime();
+    return isNaN(ms) ? null : ms;
+  })();
+
+  const items = Array.from(list.querySelectorAll<HTMLElement>(".agenda-item"));
+
+  // Pre-compute timestamps so highlight() doesn't parse strings on every tick
+  const timestamps = items.map((el) => {
+    const w = el.dataset.when;
+    const u = el.dataset.until;
+    return {
+      start: w ? new Date(w).getTime() : null,
+      end: u ? new Date(u).getTime() : null,
+    };
+  });
+
+  function highlight() {
+    const now = fixedTime ?? Date.now();
+    const dark = mode === "dark";
+
+    let currentIdx: number | null = null;
+    let nextIdx: number | null = null;
+
+    for (let i = 0; i < items.length; i++) {
+      const { start, end: endRaw } = timestamps[i];
+      if (start === null) continue;
+      const end = endRaw ?? start;
+      if (start <= now && now < end && currentIdx === null) currentIdx = i;
+      if (start > now && nextIdx === null) nextIdx = i;
+    }
+
+    items.forEach((el, i) => {
+      const isCurrent = i === currentIdx;
+      const isNext = i === nextIdx;
+      el.classList.toggle("is-current", isCurrent);
+      el.classList.toggle("is-next", isNext);
+
+      el.style.borderColor = isCurrent || isNext ? "#ed4337" : dark ? "#3a2725" : "#eee";
+      el.style.backgroundColor = isCurrent
+        ? "#ed4337"
+        : isNext
+        ? dark ? "#2c1d1b" : "#fff4f2"
+        : dark ? "#201817" : "white";
+      el.style.color = isCurrent ? "white" : dark ? "#f8ebe8" : "#464444";
+      el.style.boxShadow = isCurrent
+        ? `0 .8rem 2.4rem -1.6rem rgba(237,67,55,${dark ? ".9" : ".75"})`
+        : "";
+
+      const timeEl = el.querySelector<HTMLElement>(".time")!;
+      timeEl.style.color = isCurrent ? "white" : "#ed4337";
+
+      const badge = el.querySelector<HTMLElement>(".badge")!;
+      if (isCurrent || isNext) {
+        badge.style.display = "flex";
+        badge.textContent = isCurrent ? "Now" : "Next";
+        badge.style.backgroundColor = isCurrent ? "white" : "#ed4337";
+        badge.style.color = isCurrent ? "#ed4337" : "white";
+      } else {
+        badge.style.display = "none";
+      }
+    });
+
+    // Auto-scroll once
+    if (!window.__agendaScrolled) {
+      const idx = currentIdx ?? nextIdx;
+      if (idx !== null) {
+        window.__agendaScrolled = true;
+        requestAnimationFrame(() => {
+          items[idx]?.scrollIntoView({ block: "center" });
+        });
+      }
+    }
+  }
+
+  // Declare global on window for the scroll flag
+  declare global {
+    interface Window { __agendaScrolled?: boolean; }
+  }
+
+  highlight();
+
+  // Align first tick to next minute boundary, then every 60s
+  const msToNextMinute = 60_000 - (Date.now() % 60_000);
+  setTimeout(() => {
+    highlight();
+    setInterval(highlight, 60_000);
+  }, msToNextMinute);
+</script>

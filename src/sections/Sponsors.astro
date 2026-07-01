@@ -1,0 +1,26 @@
+---
+import { getCollection } from "astro:content";
+import AnchorHeading from "@components/AnchorHeading.astro";
+
+const sponsors = await getCollection("sponsors");
+---
+
+<section id="sponsors" class="section-lg text-center">
+  <AnchorHeading anchor="sponsors">Sponsors</AnchorHeading>
+  <div class="flex flex-wrap items-center justify-center gap-16 mt-8">
+    {sponsors.map((s) => (
+      <a
+        href={s.data.link}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="w-[calc(100vw-4rem)] sm:w-56 md:w-64 max-w-full"
+      >
+        <img
+          src={s.data.image}
+          alt={s.data.name}
+          class="w-full h-auto object-contain"
+        />
+      </a>
+    ))}
+  </div>
+</section>

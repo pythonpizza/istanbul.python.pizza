@@ -1,0 +1,18 @@
+---
+import Base from "@layouts/Base.astro";
+import { site } from "@data/site";
+import Content from "@prose/privacy-policy.mdx";
+---
+
+<Base
+  title={`Privacy Policy | ${site.pageTitle}`}
+  description="Privacy Policy for Warsaw Python Pizza."
+  noindex
+>
+  <div class="section-sm text-left">
+    <h1 class="legal-heading">Privacy Policy</h1>
+    <div class="prose-content [&_strong]:font-medium">
+      <Content />
+    </div>
+  </div>
+</Base>

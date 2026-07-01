@@ -1,0 +1,86 @@
+---
+import Base from "@layouts/Base.astro";
+import Header from "@components/Header.astro";
+import FloatingTicketsButton from "@components/FloatingTicketsButton.astro";
+import Footer from "@components/Footer.astro";
+import Hero from "@sections/Hero.astro";
+import About from "@sections/About.astro";
+import Sponsors from "@sections/Sponsors.astro";
+import Schedule from "@sections/Schedule.astro";
+import Organizers from "@sections/Organizers.astro";
+import CFPClosed from "@sections/CFPClosed.astro";
+import Venue from "@sections/Venue.astro";
+import Coc from "@sections/Coc.astro";
+import { site } from "@data/site";
+---
+
+<Base
+  title={site.pageTitle}
+  description={site.socialDescription}
+  ogImage={site.socialImageUrl}
+>
+  <Fragment slot="head">
+    <meta property="og:title" content={site.pageTitle} />
+    <meta property="og:description" content={site.socialDescription} />
+    <meta name="twitter:site" content="@pythonpizzaconf" />
+    <meta name="twitter:image:alt" content="Conference logo" />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "ConferenceEvent",
+      name: "Warsaw Python Pizza",
+      url: "https://warsaw.python.pizza",
+      startDate: "2026-05-09",
+      endDate: "2026-05-09",
+      location: {
+        "@type": "Place",
+        name: "PJAIT building A, Koszykowa 86",
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Warsaw",
+          addressCountry: "PL",
+        },
+      },
+      hasParticipationOffer: {
+        "@type": "Offer",
+        name: "Call for Proposals",
+        url: "https://forms.gle/5pqj68ES9ENaGPBf6",
+        availabilityEnds: "2026-04-12",
+      },
+      offers: {
+        "@type": "Offer",
+        name: "Tickets",
+        url: site.ticketsUrl,
+        availability: "https://schema.org/InStock",
+        validFrom: "2026-04-27",
+      },
+      hasSponsorshipOffer: {
+        "@type": "Offer",
+        name: "Sponsor Packages",
+        url: "https://warsaw.python.pizza/#sponsors",
+      },
+    })} />
+  </Fragment>
+
+  <Header />
+  <FloatingTicketsButton />
+  <main>
+    <Hero />
+    <About />
+    <Sponsors />
+    <Schedule />
+    <Organizers />
+    <CFPClosed />
+    <Venue />
+    <Coc />
+  </main>
+  <Footer />
+
+  <script is:inline async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+  <noscript>
+    <img
+      src="https://queue.simpleanalyticscdn.com/noscript.gif"
+      alt=""
+      referrerpolicy="no-referrer-when-downgrade"
+    />
+  </noscript>
+</Base>

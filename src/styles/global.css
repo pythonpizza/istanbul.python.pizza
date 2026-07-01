@@ -1,0 +1,136 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #ed4337;
+  --color-text: #464444;
+  --font-sans: "Open Sans", sans-serif;
+  --font-mono: "Roboto Mono", monospace;
+}
+
+@keyframes wave-animation {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-66.66%);
+  }
+}
+
+@keyframes bg-stripe {
+  from {
+    background-position-x: 0;
+  }
+  to {
+    background-position-x: 3rem;
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    color: var(--color-text);
+    font-weight: 300;
+  }
+
+  /* ponytail: in @layer base so Tailwind utility classes (text-primary, text-white, etc.) properly override on <a> elements */
+  a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    /* biome-ignore lint/complexity/noImportantStyles: must always win over per-element animation rules to respect reduced-motion */
+    animation-duration: 0.01ms !important;
+    /* biome-ignore lint/complexity/noImportantStyles: must always win over per-element animation rules to respect reduced-motion */
+    animation-iteration-count: 1 !important;
+  }
+}
+
+@layer components {
+  /* Narrow content column used by most sections and legal pages */
+  .section-sm {
+    @apply max-w-3xl mx-auto px-8 py-20;
+  }
+
+  /* Wide content column for sponsor grids etc. */
+  .section-lg {
+    @apply max-w-240 mx-auto px-8 py-20;
+  }
+
+  /* Prose body: MDX/markdown content areas */
+  .prose-content {
+    @apply text-base md:text-xl leading-normal;
+  }
+  .prose-content p {
+    @apply mb-0;
+  }
+  .prose-content a {
+    @apply text-primary underline;
+  }
+  .prose-content a:hover {
+    @apply opacity-80;
+  }
+  .prose-content ul {
+    @apply pl-6 list-disc;
+  }
+  .prose-content ol {
+    @apply pl-6 list-decimal;
+  }
+  .prose-content li {
+    @apply mb-1;
+  }
+  .prose-content h3 {
+    font-family: var(--font-mono);
+    font-size: inherit;
+    font-weight: 500;
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  /* Prose MDX structural primitives */
+  .prose-section {
+    @apply border-t border-primary py-6;
+  }
+  .prose-callout {
+    @apply border-l-4 border-primary pl-6;
+  }
+  .prose-banner {
+    @apply bg-primary text-white rounded-lg mb-8 p-6 text-center;
+  }
+
+  /* Legal page title (h1 on /privacy-policy/ and /terms-of-service/) */
+  .legal-heading {
+    @apply font-mono text-primary text-4xl font-medium text-center my-8;
+  }
+
+  /* Hero section subtitle / date line */
+  .hero-subtext {
+    @apply text-white text-xl font-mono font-medium text-center m-0 leading-snug;
+  }
+
+  /* Speaker/organizer avatar photo shadow */
+  .avatar-shadow {
+    @apply shadow-[2px_8px_32px_-8px_#ed4337];
+  }
+
+  /* Small inline icon link (social profile icons, speaker links) */
+  .social-link {
+    @apply inline-flex items-center leading-none;
+  }
+  .social-link img {
+    filter: brightness(0);
+  }
+}

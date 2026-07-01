@@ -1,0 +1,36 @@
+---
+import { getCollection } from "astro:content";
+import AnchorHeading from "@components/AnchorHeading.astro";
+import SocialLink from "@components/SocialLink.astro";
+
+const organizers = (await getCollection("organizers")).sort(
+  (a, b) => a.data.index - b.data.index,
+);
+---
+
+<section id="organizers" class="section-sm text-center">
+  <AnchorHeading anchor="organizers">Organizers</AnchorHeading>
+  <p class="text-base md:text-xl">
+    Python Pizza is brought to life by volunteers. Everyone from our organizing team to our amazing
+    speakers are donating their time to make this event happen.
+  </p>
+  <p class="text-base md:text-xl">By the community for the community.</p>
+
+  <div class="flex flex-wrap justify-center gap-16 mt-12">
+    {organizers.map((org) => (
+      <div class="flex flex-col items-center gap-3 w-40">
+        <img
+          src={org.data.image}
+          alt={org.data.name}
+          class="w-20 h-20 md:w-36 md:h-36 rounded-full object-cover avatar-shadow"
+        />
+        <h3 class="m-0 flex items-center justify-center gap-1 flex-wrap text-base font-medium leading-snug">
+          <span>{org.data.name}</span>
+          {org.data.links?.map((link) => (
+            <SocialLink url={link.url} icon={link.icon} label={link.label} title={link.label} />
+          ))}
+        </h3>
+      </div>
+    ))}
+  </div>
+</section>

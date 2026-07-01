@@ -1,0 +1,22 @@
+---
+interface Props {
+  url: string;
+  icon: string;
+  label: string;
+  ariaLabel?: string;
+  title?: string;
+}
+
+const { url, icon, label, ariaLabel = label, title } = Astro.props;
+---
+
+<a
+  href={url}
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label={ariaLabel}
+  title={title}
+  class="social-link"
+>
+  <img src={icon} alt={label} width="16" height="16" />
+</a>

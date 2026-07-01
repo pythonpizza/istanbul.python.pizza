@@ -1,0 +1,18 @@
+---
+interface Props {
+  invert?: boolean;
+}
+const { invert = false } = Astro.props;
+---
+
+<div
+  class="w-full overflow-hidden z-2 relative"
+  style={invert ? "transform: scale(-1); top: -2px;" : "margin-top: auto; top: 2px;"}
+>
+  <img
+    src="/icons/wave.svg"
+    alt=""
+    aria-hidden="true"
+    style="display:block; width:300%; max-width:none; animation: wave-animation 30s linear infinite forwards;"
+  />
+</div>

@@ -1,0 +1,35 @@
+---
+import AnchorHeading from "@components/AnchorHeading.astro";
+import ScheduleCard from "@components/ScheduleCard.astro";
+import { getScheduleData } from "@data/schedule";
+
+const { events, speakerMap } = await getScheduleData();
+---
+
+<section id="schedule" class="section-sm text-center">
+  <AnchorHeading anchor="schedule">Program</AnchorHeading>
+
+  <a
+    href="/compact-agenda/"
+    class="inline-flex items-center justify-center mt-4 mb-4 px-6 py-2 rounded-full bg-primary text-white font-mono text-sm hover:opacity-90 transition-opacity"
+  >
+    Compact agenda 🔗
+  </a>
+
+  <p class="mb-0 text-base md:text-xl">
+    Join us for a full day of Python talks, coffee breaks, lightning talks, and pizza.
+  </p>
+
+  {events.map((event, i) => {
+    const speakers = (event.speakerIds ?? [])
+      .map((id) => speakerMap[id])
+      .filter(Boolean);
+    return (
+      <ScheduleCard
+        event={event}
+        speakers={speakers}
+        invert={i % 2 === 0}
+      />
+    );
+  })}
+</section>

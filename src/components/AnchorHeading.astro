@@ -1,0 +1,18 @@
+---
+const { anchor, class: cls } = Astro.props as {
+  anchor: string;
+  class?: string;
+};
+const classes = [
+  "font-mono text-primary text-4xl font-medium leading-tight my-8 text-center",
+  cls,
+]
+  .filter(Boolean)
+  .join(" ");
+---
+
+<h2 id={anchor} class={classes}>
+  <a href={`#${anchor}`}>
+    <slot />
+  </a>
+</h2>

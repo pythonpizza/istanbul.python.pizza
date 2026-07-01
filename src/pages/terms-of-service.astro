@@ -1,0 +1,18 @@
+---
+import Base from "@layouts/Base.astro";
+import { site } from "@data/site";
+import Content from "@prose/terms-of-service.mdx";
+---
+
+<Base
+  title={`Terms of Service | ${site.pageTitle}`}
+  description="Terms of Service for Warsaw Python Pizza tickets and attendance."
+  noindex
+>
+  <div class="section-sm text-left">
+    <h1 class="legal-heading">Terms of Service</h1>
+    <div class="prose-content [&_strong]:font-medium">
+      <Content />
+    </div>
+  </div>
+</Base>
