@@ -38,10 +38,7 @@ const menuItems = [
     <!-- Desktop nav -->
     <nav class="hidden md:flex items-center gap-6">
       {menuItems.map(({ href, label }) => (
-        <a
-          href={href}
-          class="text-white text-center relative bg-[linear-gradient(0deg,#fff_2px,transparent_0)] bg-no-repeat bg-position-[50%] bg-size-[0_100%] transition-[background-size] duration-300 ease-[cubic-bezier(.165,.84,.44,1)] hover:bg-size-[100%_100%] px-1 py-1 text-xl"
-        >
+        <a href={href} class="nav-link text-center">
           {label}
         </a>
       ))}
@@ -52,8 +49,7 @@ const menuItems = [
   <nav
     id="mobile-menu"
     aria-hidden="true"
-    class="md:hidden fixed inset-0 z-30 flex flex-col items-center justify-center px-8 py-20 text-white opacity-0 pointer-events-none -translate-y-2 transition-[opacity,transform] duration-200 ease-in-out"
-    style="background: url('/city.png') center/cover;"
+    class="md:hidden fixed inset-0 z-30 flex flex-col items-center justify-center px-8 py-20 text-white opacity-0 pointer-events-none -translate-y-2 transition-[opacity,transform] duration-200 ease-in-out bg-[url('/city.png')] bg-center bg-cover"
   >
     <!-- Overlay tint -->
     <div class="absolute inset-0 bg-primary opacity-80 pointer-events-none"></div>
@@ -77,10 +73,24 @@ const menuItems = [
   </nav>
 </header>
 
+<style>
+  /* Hamburger → X, driven purely by the button's aria-expanded state */
+  #menu-toggle[aria-expanded="true"] #menu-icon {
+    background-color: transparent;
+  }
+  #menu-toggle[aria-expanded="true"] #menu-icon span:first-child {
+    top: 0;
+    transform: rotate(45deg);
+  }
+  #menu-toggle[aria-expanded="true"] #menu-icon span:last-child {
+    top: 0;
+    transform: rotate(-45deg);
+  }
+</style>
+
 <script>
   const toggle = document.getElementById("menu-toggle")!;
   const menu = document.getElementById("mobile-menu")!;
-  const icon = document.getElementById("menu-icon")!;
   const header = document.getElementById("site-header")!;
 
   let open = false;
@@ -93,12 +103,6 @@ const menuItems = [
     menu.classList.toggle("opacity-0", !next);
     menu.classList.toggle("pointer-events-none", !next);
     menu.classList.toggle("-translate-y-2", !next);
-    icon.classList.toggle("bg-transparent", next);
-    const bars = icon.querySelectorAll("span");
-    bars[0].classList.toggle("!top-0", next);
-    bars[0].classList.toggle("rotate-45", next);
-    bars[1].classList.toggle("!top-0", next);
-    bars[1].classList.toggle("-rotate-45", next);
     document.body.style.overflow = next ? "hidden" : "";
     header.dataset.menuOpen = String(next);
   }
