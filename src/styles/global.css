@@ -71,17 +71,17 @@
 @layer components {
   /* Narrow content column used by most sections and legal pages */
   .section-sm {
-    @apply max-w-3xl mx-auto px-8 py-14;
+    @apply max-w-3xl mx-auto px-8 py-8 md:py-12;
   }
 
   /* Wide content column for sponsor grids etc. */
   .section-lg {
-    @apply max-w-240 mx-auto px-8 py-14;
+    @apply max-w-240 mx-auto px-8 py-8 md:py-12;
   }
 
   /* Prose body: MDX/markdown content areas */
   .prose-content {
-    @apply text-base md:text-xl leading-normal;
+    @apply text-lg md:text-xl leading-normal;
   }
   .prose-content p {
     @apply mb-0;

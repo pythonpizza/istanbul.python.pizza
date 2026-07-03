@@ -55,7 +55,7 @@ const gridCols = invert ? `1fr ${photoCol}` : `${photoCol} 1fr`;
   ) : (
     <div
       class:list={[
-        "rounded-[3.2rem] md:rounded-[4rem] shadow-[0_4px_28px_-8px_#cac9c9] p-6 md:p-10 flex flex-col md:gap-6",
+        "rounded-[3.2rem] md:rounded-[4rem] shadow-[0_4px_28px_-8px_#cac9c9] p-6 md:p-10 flex flex-col items-center md:gap-6",
         event.isKeynote ? "border-[3px] border-primary shadow-[0_8px_32px_-12px_#ed4337]" : "border border-gray-100",
         photos.length > 0 ? "md:grid md:items-center md:justify-items-center" : "",
       ]}
@@ -66,7 +66,7 @@ const gridCols = invert ? `1fr ${photoCol}` : `${photoCol} 1fr`;
           class:list={[
             "relative flex items-center justify-center mb-4 md:mb-0 row-[1/span_2]",
             multiPhoto ? "w-18 h-18 md:w-30 md:h-30" : "w-16 h-16 md:w-38 md:h-38",
-            invert ? "order-2 col-start-2" : "col-start-1",
+            invert ? "md:order-2 md:col-start-2" : "md:col-start-1",
           ]}
         >
           {photos.map((photo, i) => (
@@ -87,8 +87,8 @@ const gridCols = invert ? `1fr ${photoCol}` : `${photoCol} 1fr`;
 
       <h2
         class:list={[
-          "text-text font-mono font-medium text-lg md:text-xl leading-snug m-0 mb-3 md:mb-2 wrap-break-word",
-          photos.length > 0 && (invert ? "col-start-1" : "col-start-2"),
+          "w-full text-text font-mono font-medium text-lg md:text-xl leading-snug m-0 mb-3 md:mb-2 wrap-break-word",
+          photos.length > 0 && (invert ? "md:col-start-1" : "md:col-start-2"),
         ]}
       >
         {event.title}
@@ -96,8 +96,8 @@ const gridCols = invert ? `1fr ${photoCol}` : `${photoCol} 1fr`;
 
       <div
         class:list={[
-          "flex flex-wrap items-center justify-center gap-3 text-sm md:text-xl",
-          photos.length > 0 && (invert ? "col-start-1" : "col-start-2"),
+          "w-full flex flex-wrap items-center justify-center gap-3 text-sm md:text-xl",
+          photos.length > 0 && (invert ? "md:col-start-1" : "md:col-start-2"),
         ]}
       >
         {event.isKeynote && (
