@@ -1,6 +1,6 @@
 ---
 name: Jonas Cicenas
-image: /speakers/jonas_cicenas.jpg
+image: ../../assets/speakers/jonas_cicenas.jpg
 links:
   - url: https://www.linkedin.com/in/jonascicenas/
     icon: /socials/linkedin.png

@@ -1,6 +1,6 @@
 ---
 name: Piotr Grędowski
-image: /organizers/piotr-gredowski.jpeg
+image: ../../assets/organizers/piotr-gredowski.jpeg
 index: 1
 links:
   - url: https://www.linkedin.com/in/piotrgredowski/

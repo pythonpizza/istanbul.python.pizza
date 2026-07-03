@@ -1,6 +1,6 @@
 ---
 name: 'Janusz "Ivellios" Kamieński'
-image: /speakers/janusz_kamienski.jpeg
+image: ../../assets/speakers/janusz_kamienski.jpeg
 links:
   - url: https://www.linkedin.com/in/jakamienski/
     icon: /socials/linkedin.png

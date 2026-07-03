@@ -1,6 +1,6 @@
 ---
 name: 'Bartek "PokerFacowaty" Nowak'
-image: /speakers/bartek_nowak.jpeg
+image: ../../assets/speakers/bartek_nowak.jpeg
 links:
   - url: https://github.com/PokerFacowaty
     icon: /socials/github.svg

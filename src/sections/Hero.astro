@@ -1,14 +1,18 @@
 ---
 import { format } from "date-fns";
+import { getImage } from "astro:assets";
 import CtaButton from "@components/CtaButton.astro";
 import Wave from "@components/Wave.astro";
 import { site } from "@data/site";
+import cityBg from "@assets/city.png";
 
 const dateStr = format(new Date(site.whenDatetime), site.whenFormat);
+const optimizedCityBg = await getImage({ src: cityBg, format: "avif", width: 1920 });
 ---
 
 <section
-  class="relative flex flex-col items-center justify-center bg-[url('/city.png')] bg-center bg-cover min-h-screen pt-28 md:pt-40"
+  class="relative flex flex-col items-center justify-center bg-center bg-cover min-h-screen pt-28 md:pt-40"
+  style={`background-image: url(${optimizedCityBg.src})`}
 >
   <!-- Red overlay -->
   <div class="hero-overlay absolute inset-0 bg-primary"></div>

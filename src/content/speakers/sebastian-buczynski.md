@@ -1,6 +1,6 @@
 ---
 name: Sebastian Buczyński
-image: /speakers/sebastian_buczynski.png
+image: ../../assets/speakers/sebastian_buczynski.png
 links:
   - url: https://www.linkedin.com/in/sebastianbuczynski/
     icon: /socials/linkedin.png

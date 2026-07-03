@@ -74,9 +74,10 @@ const speakerNames = (e: (typeof events)[number]) =>
 
     <!-- Back to home button -->
     <a
+      id="home-button"
       href="/"
       aria-label="Go to home page"
-      class="btn-lift fixed right-4 md:right-6 bottom-4 md:bottom-6 z-10 inline-flex items-center justify-center w-16 h-16 border border-primary rounded-full bg-white text-primary shadow-lg"
+      class="btn-lift fixed right-4 md:right-6 bottom-4 md:bottom-6 z-10 inline-flex items-center justify-center w-16 h-16 border border-primary rounded-full text-primary shadow-lg"
     >
       <img src="/icons/home.svg" alt="" aria-hidden="true" width="21" height="21" />
     </a>
@@ -116,7 +117,8 @@ const speakerNames = (e: (typeof events)[number]) =>
   #page header h1 {
     color: var(--fg);
   }
-  #theme-toggle {
+  #theme-toggle,
+  #home-button {
     background-color: var(--toggle-bg);
   }
 

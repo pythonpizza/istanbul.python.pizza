@@ -1,6 +1,6 @@
 ---
 name: Jan Bielecki
-image: /speakers/jan_bielecki.jpg
+image: ../../assets/speakers/jan_bielecki.jpg
 links:
   - url: https://www.linkedin.com/in/jan-bielecki/
     icon: /socials/linkedin.png

@@ -1,6 +1,6 @@
 ---
 name: Jakub Melzacki
-image: /speakers/jakub_melzacki.jpeg
+image: ../../assets/speakers/jakub_melzacki.jpeg
 links:
   - url: https://www.linkedin.com/in/jmelzacki/
     icon: /socials/linkedin.png

@@ -1,4 +1,6 @@
 ---
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
 import { formatEventTime } from "@data/schedule";
 import SocialLink from "@components/SocialLink.astro";
 
@@ -11,7 +13,7 @@ interface Link {
 interface Speaker {
   id: string;
   name: string;
-  image?: string;
+  image?: ImageMetadata;
   links?: Link[];
 }
 
@@ -70,9 +72,11 @@ const gridCols = invert ? `1fr ${photoCol}` : `${photoCol} 1fr`;
           ]}
         >
           {photos.map((photo, i) => (
-            <img
+            <Image
               src={photo.src}
               alt={photo.name}
+              width={320}
+              format="avif"
               class:list={[
                 "rounded-full object-cover",
                 multiPhoto

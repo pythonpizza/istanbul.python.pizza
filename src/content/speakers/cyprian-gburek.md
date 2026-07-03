@@ -1,6 +1,6 @@
 ---
 name: Cyprian Gburek
-image: /speakers/cyprian_gburek.jpeg
+image: ../../assets/speakers/cyprian_gburek.jpeg
 links:
   - url: https://www.linkedin.com/in/cyprian-gburek/
     icon: /socials/linkedin.png

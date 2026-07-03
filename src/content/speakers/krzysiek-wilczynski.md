@@ -1,6 +1,6 @@
 ---
 name: Krzysiek Wilczyński
-image: /speakers/krzzysztof_wilczynski.jpeg
+image: ../../assets/speakers/krzzysztof_wilczynski.jpeg
 links:
   - url: https://www.linkedin.com/in/3sztof/
     icon: /socials/linkedin.png

@@ -1,6 +1,6 @@
 ---
 name: Dorota Ostrowska
-image: /speakers/dorota_ostrowska.jpeg
+image: ../../assets/speakers/dorota_ostrowska.jpeg
 links:
   - url: https://www.linkedin.com/in/ostrowska-dorota/
     icon: /socials/linkedin.png

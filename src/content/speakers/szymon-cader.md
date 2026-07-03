@@ -1,6 +1,6 @@
 ---
 name: Szymon Cader
-image: /speakers/szymon_cader.png
+image: ../../assets/speakers/szymon_cader.png
 links:
   - url: https://www.linkedin.com/in/szymon-cader/
     icon: /socials/linkedin.png

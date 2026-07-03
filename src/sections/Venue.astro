@@ -1,16 +1,16 @@
 ---
+import { Image } from "astro:assets";
 import Section from "@components/Section.astro";
 import Prose from "@components/Prose.astro";
 import VenueContent from "@prose/venue.mdx";
+import outside1 from "@assets/venue/pjatk-outside-1.jpeg";
+import outside2 from "@assets/venue/pjatk-outside-2.jpeg";
+import inside1 from "@assets/venue/pjatk-inside-1.jpeg";
+import inside2 from "@assets/venue/pjatk-inside-2.jpeg";
+import inside3 from "@assets/venue/pjatk-inside-3.jpeg";
+import inside4 from "@assets/venue/pjatk-inside-4.jpeg";
 
-const venuePhotos = [
-  "/venue/pjatk-outside-1.jpeg",
-  "/venue/pjatk-outside-2.jpeg",
-  "/venue/pjatk-inside-1.jpeg",
-  "/venue/pjatk-inside-2.jpeg",
-  "/venue/pjatk-inside-3.jpeg",
-  "/venue/pjatk-inside-4.jpeg",
-];
+const venuePhotos = [outside1, outside2, inside1, inside2, inside3, inside4];
 ---
 
 <Section id="venue" title="Venue">
@@ -19,9 +19,11 @@ const venuePhotos = [
   </Prose>
   <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-12">
     {venuePhotos.map((photo, i) => (
-      <img
+      <Image
         src={photo}
         alt={`PJAIT venue photo ${i + 1}`}
+        width={800}
+        format="avif"
         class="w-full block rounded-lg object-cover aspect-4/3"
       />
     ))}

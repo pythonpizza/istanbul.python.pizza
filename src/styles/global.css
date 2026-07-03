@@ -109,6 +109,15 @@
     margin-top: 2rem;
     margin-bottom: 1rem;
   }
+  /* Numbered legal-page section titles (## <span>NN</span> Title) */
+  .prose-content h2 {
+    font-family: var(--font-mono);
+    font-size: inherit;
+    font-weight: 500;
+    text-align: left;
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
 
   /* Prose MDX structural primitives */
   .prose-section {

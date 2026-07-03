@@ -1,6 +1,6 @@
 ---
 name: Yevhen Maltsev
-image: /speakers/yevhen_maltsev.jpg
+image: ../../assets/speakers/yevhen_maltsev.jpg
 links:
   - url: https://www.linkedin.com/in/yevhen-maltsev-990500296
     icon: /socials/linkedin.png

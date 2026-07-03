@@ -1,6 +1,6 @@
 ---
 name: Kinga Marszałkowska
-image: /speakers/kinga_marszalkowska.jpeg
+image: ../../assets/speakers/kinga_marszalkowska.jpeg
 links:
   - url: https://www.linkedin.com/in/kinga-marszałkowska-38b5391a9
     icon: /socials/linkedin.png

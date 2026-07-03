@@ -10,27 +10,28 @@ const linkSchema = z.object({
 
 const speakers = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/speakers" }),
-  schema: z.object({
-    name: z.string(),
-    image: z.string().optional(),
-    links: z.array(linkSchema).optional(),
-  }),
+  schema: ({ image }) =>
+    z.object({
+      name: z.string(),
+      image: image().optional(),
+      links: z.array(linkSchema).optional(),
+    }),
 });
 
 const organizers = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/organizers" }),
-  schema: z.object({
-    name: z.string(),
-    image: z.string(),
-    index: z.number(),
-    links: z.array(linkSchema).optional(),
-  }),
+  schema: ({ image }) =>
+    z.object({
+      name: z.string(),
+      image: image(),
+      index: z.number(),
+      links: z.array(linkSchema).optional(),
+    }),
 });
 
 const eventSchema = z.object({
   label: z.string().optional(),
   title: z.string().optional(),
-  // ponytail: plain strings — reference() in file() loaders adds ceremony without gain
   speakerIds: z.array(z.string()).optional(),
   when: z.string().optional(),
   until: z.string().optional(),

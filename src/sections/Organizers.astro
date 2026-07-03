@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
 import Section from "@components/Section.astro";
 import Prose from "@components/Prose.astro";
 import SocialLink from "@components/SocialLink.astro";
@@ -21,9 +22,11 @@ const organizers = (await getCollection("organizers")).sort(
   <div class="grid grid-cols-2 sm:grid-cols-3 place-items-center gap-x-4 gap-y-10 md:flex md:flex-wrap md:justify-center md:gap-16 mt-12">
     {organizers.map((org) => (
       <div class="flex flex-col items-center gap-3">
-        <img
+        <Image
           src={org.data.image}
           alt={org.data.name}
+          width={400}
+          format="avif"
           class="w-28 h-28 md:w-44 md:h-44 rounded-full object-cover avatar-shadow"
         />
         <h3 class="m-0 flex items-center justify-center gap-1 flex-wrap text-base font-medium leading-snug">

@@ -1,4 +1,4 @@
 ---
 name: Aksa Fatima
-image: /speakers/aksa_fatima.jpeg
+image: ../../assets/speakers/aksa_fatima.jpeg
 ---

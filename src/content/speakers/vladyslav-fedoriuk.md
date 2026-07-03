@@ -1,6 +1,6 @@
 ---
 name: Vladyslav Fedoriuk
-image: /speakers/vlad_fedoriuk.jpeg
+image: ../../assets/speakers/vlad_fedoriuk.jpeg
 links:
   - url: https://www.linkedin.com/in/vladyslav-fedoriuk
     icon: /socials/linkedin.png

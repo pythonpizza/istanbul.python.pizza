@@ -1,6 +1,6 @@
 ---
 name: Andrii Orlov
-image: /speakers/Andrii_Orlov.jpg
+image: ../../assets/speakers/Andrii_Orlov.jpg
 links:
   - url: https://www.linkedin.com/in/orlan0045/
     icon: /socials/linkedin.png
