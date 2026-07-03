@@ -1,3 +1,5 @@
+const ticketsUrl = "https://pretix.eu/europython/warsaw-python-pizza/";
+
 // ponytail: singleton config — no collection needed
 export const site = {
   pageTitle: "Warsaw Python Pizza",
@@ -6,7 +8,9 @@ export const site = {
   subHeading: "PJAIT building A, Koszykowa 86, Warsaw, Poland",
   whenDatetime: "2026/05/09 10:00 AM UTC+2",
   whenFormat: "do MMMM y",
-  ticketsUrl: "https://pretix.eu/europython/warsaw-python-pizza/",
+  ticketsUrl,
+  // Whatever's most important right now (tickets, CFP, sold out) — change this one line.
+  cta: { label: "Buy tickets 🎫", href: ticketsUrl },
   contactEmail: "warsawpythonpizza@gmail.com",
   socialImageUrl: "https://warsaw.python.pizza/social-image.jpg",
 };

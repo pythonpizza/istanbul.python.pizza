@@ -10,11 +10,13 @@ const organizers = (await getCollection("organizers")).sort(
 
 <section id="organizers" class="section-sm text-center">
   <AnchorHeading anchor="organizers">Organizers</AnchorHeading>
-  <p class="text-base md:text-xl">
-    Python Pizza is brought to life by volunteers. Everyone from our organizing team to our amazing
-    speakers are donating their time to make this event happen.
-  </p>
-  <p class="text-base md:text-xl">By the community for the community.</p>
+  <div class="prose-content">
+    <p>
+      Python Pizza is brought to life by volunteers. Everyone from our organizing team to our amazing
+      speakers are donating their time to make this event happen.
+    </p>
+    <p>By the community for the community.</p>
+  </div>
 
   <div class="flex flex-wrap justify-center gap-16 mt-12">
     {organizers.map((org) => (

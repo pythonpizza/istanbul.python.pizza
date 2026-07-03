@@ -7,7 +7,7 @@ const sponsors = await getCollection("sponsors");
 
 <section id="sponsors" class="section-lg text-center">
   <AnchorHeading anchor="sponsors">Sponsors</AnchorHeading>
-  <div class="flex flex-wrap items-center justify-center gap-16 mt-8">
+  <div class="flex flex-wrap items-center justify-center gap-16 mt-12">
     {sponsors.map((s) => (
       <a
         href={s.data.link}

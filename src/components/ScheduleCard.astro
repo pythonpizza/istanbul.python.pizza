@@ -47,9 +47,9 @@ const photoCol = multiPhoto ? "7.5rem" : "10.625rem";
 const gridCols = invert ? `1fr ${photoCol}` : `${photoCol} 1fr`;
 ---
 
-<div class="relative mt-12.5">
+<div class="relative mt-12">
   {isInfo ? (
-    <div class="stripe-badge px-8 py-6 md:px-25 md:py-8 rounded-[2.4rem] md:rounded-full bg-primary text-white text-base md:text-xl text-center">
+    <div class="stripe-badge px-8 py-6 md:px-24 md:py-8 rounded-[2.4rem] md:rounded-full bg-primary text-white text-base md:text-xl text-center">
       {event.label}
     </div>
   ) : (
@@ -76,7 +76,7 @@ const gridCols = invert ? `1fr ${photoCol}` : `${photoCol} 1fr`;
               class:list={[
                 "rounded-full object-cover",
                 multiPhoto
-                  ? "w-12 h-12 md:w-20 md:h-20 absolute border-[3px] border-white shadow-[2px_8px_24px_-8px_#ed4337]"
+                  ? "w-12 h-12 md:w-20 md:h-20 absolute border-[3px] border-white avatar-shadow"
                   : "w-full h-full avatar-shadow",
               ]}
               style={multiPhoto ? `top: ${i === 0 ? "0" : "1.5rem"}; left: ${i === 0 ? "0" : "1.5rem"}; z-index: ${photos.length - i}` : ""}
@@ -123,7 +123,7 @@ const gridCols = invert ? `1fr ${photoCol}` : `${photoCol} 1fr`;
   {timeRange && (
     <span
       class:list={[
-        "absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-3 py-[.35rem] rounded-full font-mono text-[0.8125rem] md:text-base whitespace-nowrap shadow-[0_4px_16px_-8px_#464444] z-10",
+        "absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-3 py-1.5 rounded-full font-mono text-sm md:text-base whitespace-nowrap shadow-[0_4px_16px_-8px_#464444] z-10",
         isInfo ? "bg-white text-primary" : "bg-primary text-white",
       ]}
     >

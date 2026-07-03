@@ -1,7 +1,8 @@
 ---
+import { format } from "date-fns";
 import Base from "@layouts/Base.astro";
 import Header from "@components/Header.astro";
-import FloatingTicketsButton from "@components/FloatingTicketsButton.astro";
+import CtaButton from "@components/CtaButton.astro";
 import Footer from "@components/Footer.astro";
 import Hero from "@sections/Hero.astro";
 import About from "@sections/About.astro";
@@ -12,6 +13,8 @@ import CFPClosed from "@sections/CFPClosed.astro";
 import Venue from "@sections/Venue.astro";
 import Coc from "@sections/Coc.astro";
 import { site } from "@data/site";
+
+const eventDate = format(new Date(site.whenDatetime), "yyyy-MM-dd");
 ---
 
 <Base
@@ -27,10 +30,10 @@ import { site } from "@data/site";
     <script type="application/ld+json" is:inline set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "ConferenceEvent",
-      name: "Warsaw Python Pizza",
+      name: site.pageTitle,
       url: "https://warsaw.python.pizza",
-      startDate: "2026-05-09",
-      endDate: "2026-05-09",
+      startDate: eventDate,
+      endDate: eventDate,
       location: {
         "@type": "Place",
         name: "PJAIT building A, Koszykowa 86",
@@ -62,7 +65,12 @@ import { site } from "@data/site";
   </Fragment>
 
   <Header />
-  <FloatingTicketsButton />
+  <CtaButton
+    href={site.cta.href}
+    class="fixed right-4 bottom-4 md:right-8 md:bottom-8 z-20 min-w-40 md:min-w-44 shadow-lg"
+  >
+    {site.cta.label}
+  </CtaButton>
   <main>
     <Hero />
     <About />

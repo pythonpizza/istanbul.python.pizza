@@ -25,9 +25,19 @@
   }
 }
 
+@keyframes pill-condense {
+  to {
+    scale: 0.94;
+    background-color: rgb(42 22 20 / 0.78);
+    box-shadow: 0 12px 32px -12px rgb(0 0 0 / 0.45);
+  }
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
+    /* header is fixed; keep anchor jumps clear of the floating pill */
+    scroll-padding-top: 6rem;
   }
 
   body {
@@ -61,12 +71,12 @@
 @layer components {
   /* Narrow content column used by most sections and legal pages */
   .section-sm {
-    @apply max-w-3xl mx-auto px-8 py-20;
+    @apply max-w-3xl mx-auto px-8 py-14;
   }
 
   /* Wide content column for sponsor grids etc. */
   .section-lg {
-    @apply max-w-240 mx-auto px-8 py-20;
+    @apply max-w-240 mx-auto px-8 py-14;
   }
 
   /* Prose body: MDX/markdown content areas */
@@ -111,9 +121,9 @@
     @apply bg-primary text-white rounded-lg mb-8 p-6 text-center;
   }
 
-  /* Legal page title (h1 on /privacy-policy/ and /terms-of-service/) */
-  .legal-heading {
-    @apply font-mono text-primary text-4xl font-medium text-center my-8;
+  /* Section heading (h2 anchors) and legal page title (h1) share this look */
+  .section-heading {
+    @apply font-mono text-primary text-4xl font-medium leading-tight text-center my-8;
   }
 
   /* Hero section subtitle / date line */
@@ -134,28 +144,45 @@
     filter: brightness(0);
   }
 
-  /* Desktop nav link: underline grows from center on hover */
+  /* Desktop nav link inside the floating pill: soft highlight on hover */
   .nav-link {
-    @apply relative text-white text-xl px-1 py-1;
+    @apply rounded-full px-4 py-2 text-lg text-white/90 transition-colors duration-100 hover:bg-white/15 hover:text-white;
   }
-  .nav-link::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 2px;
-    background: currentColor;
-    transform: scaleX(0);
-    transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+  /* Floating glass navbar pill */
+  .glass-pill {
+    @apply rounded-full border border-white/20 bg-[#2a1614]/60 text-white shadow-lg backdrop-blur-md;
+    /* promote to its own compositor layer so the scroll-linked scale below stays smooth */
+    will-change: transform;
   }
-  .nav-link:hover::after {
-    transform: scaleX(1);
+  @supports (animation-timeline: scroll()) {
+    .glass-pill {
+      /* longhand, not the `animation` shorthand: the build's CSS minifier folds a
+         separate animation-timeline decl into the shorthand using a token order
+         Chrome rejects outright (animation-name silently computes to none) */
+      animation-name: pill-condense;
+      animation-duration: auto;
+      animation-timing-function: ease-out;
+      animation-fill-mode: both;
+      animation-timeline: scroll();
+      animation-range: 0 5rem;
+    }
   }
 
   /* Lift affordance for pill/CTA buttons */
   .btn-lift {
     @apply hover:-translate-y-0.5 transition-transform;
+  }
+
+  /* Generalized CTA pill button */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-mono font-medium text-sm md:text-base text-center transition-all duration-300 hover:-translate-y-0.5;
+  }
+  .btn-solid {
+    @apply bg-primary text-white border border-white;
+  }
+  .btn-outline {
+    @apply border-2 border-white bg-white/15 text-white backdrop-blur-sm hover:bg-white hover:text-primary;
   }
 
   /* Diagonal striped animated background for the schedule's info/label cards */

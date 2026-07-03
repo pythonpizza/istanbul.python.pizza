@@ -2,43 +2,43 @@
 import Logo from "@components/Logo.astro";
 
 const menuItems = [
-  { href: "#about", label: "About 🍕" },
-  { href: "#cfp", label: "CFP 🙋🏻‍♀️" },
+  { href: "/#about", label: "About 🍕" },
+  { href: "/#sponsors", label: "Sponsors 💛" },
+  { href: "/#schedule", label: "Program 📅" },
   { href: "/compact-agenda/", label: "Compact agenda 🔗" },
-  { href: "#schedule", label: "Program 📅" },
-  { href: "#organizers", label: "Organizers 👩🏻" },
-  { href: "#venue", label: "Venue 🏰" },
-  { href: "#sponsors", label: "Sponsors 💛" },
-  { href: "#coc", label: "CoC 💂" },
+  { href: "/#organizers", label: "Organizers 👩🏻" },
+  { href: "/#cfp", label: "CFP 🙋🏻‍♀️" },
+  { href: "/#venue", label: "Venue 🏰" },
+  { href: "/#coc", label: "CoC 💂" },
 ];
 ---
 
 <header
   id="site-header"
-  class="absolute top-0 left-0 w-full z-10 data-[menu-open=true]:z-30"
+  class="fixed top-3 md:top-4 left-0 w-full z-20 px-4 data-[menu-open=true]:z-30"
 >
-  <div class="flex items-center justify-between text-white px-8 py-6 max-w-240 mx-auto">
-    <Logo class="mr-10" />
+  <div class="glass-pill relative z-40 mx-auto flex w-fit max-w-full items-center gap-3 lg:gap-4 py-3 pl-4 pr-4">
+    <Logo class="shrink-0 size-14" />
 
-    <!-- Hamburger button (mobile) -->
+    <!-- Hamburger button (mobile/tablet) -->
     <button
       id="menu-toggle"
       type="button"
       aria-controls="mobile-menu"
       aria-expanded="false"
       aria-label="Open menu"
-      class="md:hidden relative z-40 w-[3.2rem] h-[3.2rem] flex items-center justify-center border border-white/65 rounded-full bg-primary/20 text-white cursor-pointer backdrop-blur-sm"
+      class="lg:hidden flex h-12 w-12 items-center justify-center rounded-full text-white cursor-pointer"
     >
-      <span id="menu-icon" class="relative w-6 h-px rounded-full bg-white block transition-colors duration-200">
-        <span class="absolute left-0 w-6 h-px rounded-full bg-white block -top-2 transition-all duration-200"></span>
-        <span class="absolute left-0 w-6 h-px rounded-full bg-white block top-2 transition-all duration-200"></span>
+      <span id="menu-icon" class="relative w-7 h-0.5 rounded-full bg-white block transition-colors duration-200">
+        <span class="absolute left-0 w-7 h-0.5 rounded-full bg-white block -top-2.5 transition-all duration-200"></span>
+        <span class="absolute left-0 w-7 h-0.5 rounded-full bg-white block top-2.5 transition-all duration-200"></span>
       </span>
     </button>
 
     <!-- Desktop nav -->
-    <nav class="hidden md:flex items-center gap-6">
+    <nav class="hidden lg:flex items-center gap-1">
       {menuItems.map(({ href, label }) => (
-        <a href={href} class="nav-link text-center">
+        <a href={href} class="nav-link text-center whitespace-nowrap">
           {label}
         </a>
       ))}
@@ -49,7 +49,7 @@ const menuItems = [
   <nav
     id="mobile-menu"
     aria-hidden="true"
-    class="md:hidden fixed inset-0 z-30 flex flex-col items-center justify-center px-8 py-20 text-white opacity-0 pointer-events-none -translate-y-2 transition-[opacity,transform] duration-200 ease-in-out bg-[url('/city.png')] bg-center bg-cover"
+    class="lg:hidden fixed inset-0 z-30 flex flex-col items-center justify-center px-8 py-20 text-white opacity-0 pointer-events-none -translate-y-2 transition-[opacity,transform] duration-200 ease-in-out bg-[url('/city.png')] bg-center bg-cover"
   >
     <!-- Overlay tint -->
     <div class="absolute inset-0 bg-primary opacity-80 pointer-events-none"></div>
@@ -119,6 +119,6 @@ const menuItems = [
   });
 
   // Close when viewport goes desktop
-  const mq = window.matchMedia("(min-width: 48rem)");
+  const mq = window.matchMedia("(min-width: 64rem)");
   mq.addEventListener("change", (e) => { if (e.matches) setOpen(false); });
 </script>

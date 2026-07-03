@@ -1,0 +1,19 @@
+---
+interface Props {
+  href: string;
+  variant?: "solid" | "outline";
+  class?: string;
+}
+
+const { href, variant = "solid", class: cls } = Astro.props;
+const external = href.startsWith("http");
+---
+
+<a
+  href={href}
+  target={external ? "_blank" : undefined}
+  rel={external ? "noopener noreferrer" : undefined}
+  class:list={["btn", variant === "outline" ? "btn-outline" : "btn-solid", cls]}
+>
+  <slot />
+</a>
