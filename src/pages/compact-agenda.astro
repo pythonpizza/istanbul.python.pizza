@@ -1,6 +1,7 @@
 ---
 import Base from "@layouts/Base.astro";
 import { getScheduleData, formatEventTime } from "@data/schedule";
+import { site } from "@data/site";
 
 const { events, speakerMap } = await getScheduleData();
 
@@ -14,13 +15,13 @@ const speakerNames = (e: (typeof events)[number]) =>
 ---
 
 <Base
-  title="Agenda for May 9, 2026 | Warsaw Python Pizza"
-  description="Compact day-of agenda for Warsaw Python Pizza on May 9, 2026."
+  title={`Compact Agenda | ${site.pageTitle}`}
+  description={`Compact day-of agenda for ${site.pageTitle}.`}
 >
   <div id="page" class="min-h-screen">
     <header class="sticky top-0 z-10 grid grid-cols-[2.5rem_1fr_2.5rem] items-center gap-2 border-b backdrop-blur-md px-4 md:px-8 py-3">
       <h1 class="m-0 font-mono text-lg md:text-2xl leading-tight text-center col-start-2">
-        Agenda for Warsaw Python Pizza, May 9 2026
+        Compact Agenda — {site.pageTitle}
       </h1>
       <button
         id="theme-toggle"
@@ -34,6 +35,7 @@ const speakerNames = (e: (typeof events)[number]) =>
     </header>
 
     <div class="max-w-4xl mx-auto px-4 md:px-8 pt-5 pb-24">
+      {events.length === 0 && <p class="text-center">Agenda will be announced soon.</p>}
       <ol id="agenda-list" class="list-none grid gap-2 m-0 p-0">
         {events.map((event, i) => {
           const speakers = speakerNames(event);

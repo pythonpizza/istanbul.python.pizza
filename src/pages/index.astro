@@ -1,5 +1,4 @@
 ---
-import { format } from "date-fns";
 import Base from "@layouts/Base.astro";
 import Header from "@components/Header.astro";
 import CtaButton from "@components/CtaButton.astro";
@@ -8,21 +7,19 @@ import Prose from "@components/Prose.astro";
 import Footer from "@components/Footer.astro";
 import Hero from "@sections/Hero.astro";
 import Sponsors from "@sections/Sponsors.astro";
-import Schedule from "@sections/Schedule.astro";
-import Organizers from "@sections/Organizers.astro";
+// import Schedule from "@sections/Schedule.astro"; // re-enable once the program is set
+// import Organizers from "@sections/Organizers.astro"; // re-enable once organizers are confirmed
 import Venue from "@sections/Venue.astro";
 import AboutContent from "@prose/about.mdx";
 import CfpContent from "@prose/cfp.mdx";
 import CocContent from "@prose/coc.mdx";
 import { site } from "@data/site";
-
-const eventDate = format(new Date(site.whenDatetime), "yyyy-MM-dd");
 ---
 
 <Base
   title={site.pageTitle}
   description={site.socialDescription}
-  ogImage={site.socialImageUrl}
+  ogImage={new URL("/social-image.jpg", Astro.site).href}
 >
   <Fragment slot="head">
     <meta property="og:title" content={site.pageTitle} />
@@ -33,35 +30,16 @@ const eventDate = format(new Date(site.whenDatetime), "yyyy-MM-dd");
       "@context": "https://schema.org",
       "@type": "ConferenceEvent",
       name: site.pageTitle,
-      url: "https://warsaw.python.pizza",
-      startDate: eventDate,
-      endDate: eventDate,
-      location: {
-        "@type": "Place",
-        name: "PJAIT building A, Koszykowa 86",
-        address: {
-          "@type": "PostalAddress",
-          addressLocality: "Warsaw",
-          addressCountry: "PL",
-        },
-      },
-      hasParticipationOffer: {
-        "@type": "Offer",
-        name: "Call for Proposals",
-        url: "https://forms.gle/5pqj68ES9ENaGPBf6",
-        availabilityEnds: "2026-04-12",
-      },
+      url: Astro.site?.href,
       offers: {
         "@type": "Offer",
         name: "Tickets",
         url: site.ticketsUrl,
-        availability: "https://schema.org/InStock",
-        validFrom: "2026-04-27",
       },
       hasSponsorshipOffer: {
         "@type": "Offer",
         name: "Sponsor Packages",
-        url: "https://warsaw.python.pizza/#sponsors",
+        url: new URL("#sponsors", Astro.site).href,
       },
     })} />
   </Fragment>
@@ -76,13 +54,13 @@ const eventDate = format(new Date(site.whenDatetime), "yyyy-MM-dd");
   </CtaButton>
   <main>
     <Hero />
-    <Section id="about" title="Python Pizza is Coming to Warsaw!">
+    <Section id="about" title="Python Pizza is Coming to Istanbul!">
       <Prose><AboutContent /></Prose>
     </Section>
     <Sponsors />
-    <Schedule />
-    <Organizers />
-    <Section id="cfp" title="Proposals submission is now closed">
+    {/* <Schedule /> */}
+    {/* <Organizers /> */}
+    <Section id="cfp" title="Call for Proposals — opening soon">
       <Prose><CfpContent /></Prose>
     </Section>
     <Venue />

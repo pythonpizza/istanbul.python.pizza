@@ -1,12 +1,10 @@
 ---
-import { format } from "date-fns";
 import { getImage } from "astro:assets";
 import CtaButton from "@components/CtaButton.astro";
 import Wave from "@components/Wave.astro";
 import { site } from "@data/site";
-import cityBg from "@assets/city.png";
+import cityBg from "@assets/city.jpg";
 
-const dateStr = format(new Date(site.whenDatetime), site.whenFormat);
 const optimizedCityBg = await getImage({
   src: cityBg,
   format: "avif",
@@ -25,7 +23,7 @@ const optimizedCityBg = await getImage({
       {site.siteHeading}
     </h1>
     <p class="hero-subtext md:text-[2.2rem]">{site.subHeading}</p>
-    <p class="hero-subtext md:text-[2.2rem]">{dateStr}</p>
+    <p class="hero-subtext md:text-[2.2rem]">Date to be announced</p>
     <CtaButton
       id="hero-cta"
       href={site.cta.href}
