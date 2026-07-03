@@ -46,7 +46,6 @@
     font-weight: 300;
   }
 
-  /* ponytail: in @layer base so Tailwind utility classes (text-primary, text-white, etc.) properly override on <a> elements */
   a {
     color: inherit;
     text-decoration: none;
@@ -69,17 +68,14 @@
 }
 
 @layer components {
-  /* Narrow content column used by most sections and legal pages */
   .section-sm {
     @apply max-w-3xl mx-auto px-8 py-8 md:py-12;
   }
 
-  /* Wide content column for sponsor grids etc. */
   .section-lg {
     @apply max-w-240 mx-auto px-8 py-8 md:py-12;
   }
 
-  /* Prose body: MDX/markdown content areas */
   .prose-content {
     @apply text-lg md:text-xl leading-normal;
   }
@@ -119,7 +115,6 @@
     margin-bottom: 1rem;
   }
 
-  /* Prose MDX structural primitives */
   .prose-section {
     @apply border-t border-primary py-6;
   }
@@ -135,17 +130,14 @@
     @apply font-mono text-primary text-4xl font-medium leading-tight text-center my-8;
   }
 
-  /* Hero section subtitle / date line */
   .hero-subtext {
     @apply text-white text-xl font-mono font-medium text-center m-0 leading-snug;
   }
 
-  /* Speaker/organizer avatar photo shadow */
   .avatar-shadow {
     @apply shadow-[2px_8px_32px_-8px_#ed4337];
   }
 
-  /* Small inline icon link (social profile icons, speaker links) */
   .social-link {
     @apply inline-flex items-center leading-none;
   }
@@ -153,15 +145,12 @@
     filter: brightness(0);
   }
 
-  /* Desktop nav link inside the floating pill: soft highlight on hover */
   .nav-link {
     @apply rounded-full px-4 py-2 text-lg text-white/90 transition-colors duration-100 hover:bg-white/15 hover:text-white;
   }
 
-  /* Floating glass navbar pill */
   .glass-pill {
     @apply rounded-full border border-white/20 bg-[#2a1614]/60 text-white shadow-lg backdrop-blur-md;
-    /* promote to its own compositor layer so the scroll-linked scale below stays smooth */
     will-change: transform;
   }
   @supports (animation-timeline: scroll()) {
@@ -178,12 +167,10 @@
     }
   }
 
-  /* Lift affordance for pill/CTA buttons */
   .btn-lift {
-    @apply hover:-translate-y-0.5 transition-transform;
+    @apply hover:-translate-y-0.5 transition-transform duration-300;
   }
 
-  /* Generalized CTA pill button */
   .btn {
     @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-mono font-medium text-sm md:text-base text-center transition-all duration-300 hover:-translate-y-0.5;
   }
@@ -194,7 +181,11 @@
     @apply border-2 border-white bg-white/15 text-white backdrop-blur-sm hover:bg-white hover:text-primary;
   }
 
-  /* Diagonal striped animated background for the schedule's info/label cards */
+  .cta-hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
   .stripe-badge {
     background-image: linear-gradient(
       45deg,

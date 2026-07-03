@@ -14,7 +14,15 @@ export default defineConfig({
   build: {
     format: "directory",
   },
-  integrations: [mdx(), sitemap(), deleteUnusedImages(), compress()],
+  integrations: [
+    mdx(),
+    sitemap(),
+    deleteUnusedImages(),
+    compress({
+      // csso is disabled because it breaks some new tailwind features
+      CSS: { csso: false, lightningcss: {} },
+    }),
+  ],
   vite: {
     plugins: [tailwindcss()],
   },

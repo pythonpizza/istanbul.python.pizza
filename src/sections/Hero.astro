@@ -7,14 +7,17 @@ import { site } from "@data/site";
 import cityBg from "@assets/city.png";
 
 const dateStr = format(new Date(site.whenDatetime), site.whenFormat);
-const optimizedCityBg = await getImage({ src: cityBg, format: "avif", width: 1920 });
+const optimizedCityBg = await getImage({
+  src: cityBg,
+  format: "avif",
+  width: 1920,
+});
 ---
 
 <section
   class="relative flex flex-col items-center justify-center bg-center bg-cover min-h-screen pt-28 md:pt-40"
   style={`background-image: url(${optimizedCityBg.src})`}
 >
-  <!-- Red overlay -->
   <div class="hero-overlay absolute inset-0 bg-primary"></div>
 
   <div class="relative z-10 m-auto p-8 text-center">
@@ -23,7 +26,12 @@ const optimizedCityBg = await getImage({ src: cityBg, format: "avif", width: 192
     </h1>
     <p class="hero-subtext md:text-[2.2rem]">{site.subHeading}</p>
     <p class="hero-subtext md:text-[2.2rem]">{dateStr}</p>
-    <CtaButton href={site.cta.href} variant="outline" class="mt-12 px-10 py-4 text-lg md:text-xl">
+    <CtaButton
+      id="hero-cta"
+      href={site.cta.href}
+      variant="outline"
+      class="mt-12 px-10 py-4 text-lg md:text-xl"
+    >
       {site.cta.label}
     </CtaButton>
   </div>

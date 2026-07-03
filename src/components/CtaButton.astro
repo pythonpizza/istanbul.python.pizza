@@ -3,13 +3,15 @@ interface Props {
   href: string;
   variant?: "solid" | "outline";
   class?: string;
+  id?: string;
 }
 
-const { href, variant = "solid", class: cls } = Astro.props;
+const { href, variant = "solid", class: cls, id } = Astro.props;
 const external = href.startsWith("http");
 ---
 
 <a
+  id={id}
   href={href}
   target={external ? "_blank" : undefined}
   rel={external ? "noopener noreferrer" : undefined}

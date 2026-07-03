@@ -18,7 +18,6 @@ const speakerNames = (e: (typeof events)[number]) =>
   description="Compact day-of agenda for Warsaw Python Pizza on May 9, 2026."
 >
   <div id="page" class="min-h-screen">
-    <!-- Sticky header -->
     <header class="sticky top-0 z-10 grid grid-cols-[2.5rem_1fr_2.5rem] items-center gap-2 border-b backdrop-blur-md px-4 md:px-8 py-3">
       <h1 class="m-0 font-mono text-lg md:text-2xl leading-tight text-center col-start-2">
         Agenda for Warsaw Python Pizza, May 9 2026
@@ -29,14 +28,11 @@ const speakerNames = (e: (typeof events)[number]) =>
         aria-label="Switch to dark mode"
         class="inline-flex items-center justify-center w-10 h-10 p-0 border border-primary rounded-full text-primary cursor-pointer col-start-3"
       >
-        <!-- sun icon (shown in dark mode) -->
         <img id="icon-sun" src="/icons/theme-sun.svg" alt="" aria-hidden="true" width="18" height="18" />
-        <!-- moon icon (shown in light mode) -->
         <img id="icon-moon" src="/icons/theme-moon.svg" alt="" aria-hidden="true" width="18" height="18" />
       </button>
     </header>
 
-    <!-- Agenda list -->
     <div class="max-w-4xl mx-auto px-4 md:px-8 pt-5 pb-24">
       <ol id="agenda-list" class="list-none grid gap-2 m-0 p-0">
         {events.map((event, i) => {
@@ -72,7 +68,6 @@ const speakerNames = (e: (typeof events)[number]) =>
       </ol>
     </div>
 
-    <!-- Back to home button -->
     <a
       id="home-button"
       href="/"
@@ -176,7 +171,6 @@ const speakerNames = (e: (typeof events)[number]) =>
   const toggleBtn = document.getElementById("theme-toggle")!;
   const STORAGE_KEY = "compact-agenda-color-mode";
 
-  // --- Dark mode ---
   type Mode = "light" | "dark";
 
   function getInitialMode(): Mode {
@@ -199,8 +193,6 @@ const speakerNames = (e: (typeof events)[number]) =>
     localStorage.setItem(STORAGE_KEY, mode);
     applyMode(mode);
   });
-
-  // --- Time highlighting ---
 
   // Parse highlightTime param once; fall back to real clock per tick
   const fixedTime: number | null = (() => {
@@ -251,7 +243,6 @@ const speakerNames = (e: (typeof events)[number]) =>
       }
     });
 
-    // Auto-scroll once
     if (!window.__agendaScrolled) {
       const idx = currentIdx ?? nextIdx;
       if (idx !== null) {
@@ -263,7 +254,6 @@ const speakerNames = (e: (typeof events)[number]) =>
     }
   }
 
-  // Declare global on window for the scroll flag
   declare global {
     interface Window { __agendaScrolled?: boolean; }
   }

@@ -3,7 +3,11 @@ import { getImage } from "astro:assets";
 import Logo from "@components/Logo.astro";
 import cityBg from "@assets/city.png";
 
-const optimizedCityBg = await getImage({ src: cityBg, format: "avif", width: 1200 });
+const optimizedCityBg = await getImage({
+  src: cityBg,
+  format: "avif",
+  width: 1200,
+});
 
 const menuItems = [
   { href: "/#about", label: "About 🍕" },
@@ -24,7 +28,6 @@ const menuItems = [
   <div class="glass-pill relative z-40 mx-auto flex w-fit max-w-full items-center gap-3 lg:gap-4 py-3 pl-4 pr-4">
     <Logo class="shrink-0 size-14" />
 
-    <!-- Hamburger button (mobile/tablet) -->
     <button
       id="menu-toggle"
       type="button"
@@ -39,7 +42,6 @@ const menuItems = [
       </span>
     </button>
 
-    <!-- Desktop nav -->
     <nav class="hidden lg:flex items-center gap-1">
       {menuItems.map(({ href, label }) => (
         <a href={href} class="nav-link text-center whitespace-nowrap">
@@ -49,14 +51,12 @@ const menuItems = [
     </nav>
   </div>
 
-  <!-- Mobile menu overlay -->
   <nav
     id="mobile-menu"
     aria-hidden="true"
     class="lg:hidden fixed inset-0 z-30 flex flex-col items-center justify-start overflow-y-auto px-8 pt-28 pb-10 text-white opacity-0 pointer-events-none -translate-y-2 transition-[opacity,transform] duration-200 ease-in-out bg-center bg-cover"
     style={`background-image: url(${optimizedCityBg.src})`}
   >
-    <!-- Overlay tint -->
     <div class="absolute inset-0 bg-primary opacity-80 pointer-events-none"></div>
 
     <div class="relative z-10 mb-8">
@@ -79,7 +79,6 @@ const menuItems = [
 </header>
 
 <style>
-  /* Hamburger → X, driven purely by the button's aria-expanded state */
   #menu-toggle[aria-expanded="true"] #menu-icon {
     background-color: transparent;
   }
@@ -118,12 +117,10 @@ const menuItems = [
     if (e.key === "Escape" && open) setOpen(false);
   });
 
-  // Close on nav link click
   menu.querySelectorAll(".mobile-nav-link").forEach((link) => {
     link.addEventListener("click", () => setOpen(false));
   });
 
-  // Close when viewport goes desktop
   const mq = window.matchMedia("(min-width: 64rem)");
   mq.addEventListener("change", (e) => { if (e.matches) setOpen(false); });
 </script>

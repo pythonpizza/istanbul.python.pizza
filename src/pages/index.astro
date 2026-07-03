@@ -68,8 +68,9 @@ const eventDate = format(new Date(site.whenDatetime), "yyyy-MM-dd");
 
   <Header />
   <CtaButton
+    id="floating-cta"
     href={site.cta.href}
-    class="fixed right-4 bottom-4 md:right-8 md:bottom-8 z-20 min-w-40 md:min-w-44 shadow-lg"
+    class="cta-hidden fixed right-4 bottom-4 md:right-8 md:bottom-8 z-20 min-w-40 md:min-w-44 shadow-lg"
   >
     {site.cta.label}
   </CtaButton>
@@ -90,4 +91,18 @@ const eventDate = format(new Date(site.whenDatetime), "yyyy-MM-dd");
     </Section>
   </main>
   <Footer />
+
+  <script>
+    // floating cta button appears when the hero cta button is scrolled out of view
+    const heroCta = document.getElementById("hero-cta");
+    const floatingCta = document.getElementById("floating-cta");
+
+    if (heroCta && floatingCta) {
+      const observer = new IntersectionObserver(
+        ([entry]) => floatingCta.classList.toggle("cta-hidden", entry.isIntersecting),
+        { threshold: 0.4 },
+      );
+      observer.observe(heroCta);
+    }
+  </script>
 </Base>
