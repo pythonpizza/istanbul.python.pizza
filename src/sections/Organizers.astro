@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
-import AnchorHeading from "@components/AnchorHeading.astro";
+import Section from "@components/Section.astro";
+import Prose from "@components/Prose.astro";
 import SocialLink from "@components/SocialLink.astro";
 
 const organizers = (await getCollection("organizers")).sort(
@@ -8,15 +9,14 @@ const organizers = (await getCollection("organizers")).sort(
 );
 ---
 
-<section id="organizers" class="section-sm text-center">
-  <AnchorHeading anchor="organizers">Organizers</AnchorHeading>
-  <div class="prose-content">
+<Section id="organizers" title="Organizers">
+  <Prose>
     <p>
       Python Pizza is brought to life by volunteers. Everyone from our organizing team to our amazing
       speakers are donating their time to make this event happen.
     </p>
     <p>By the community for the community.</p>
-  </div>
+  </Prose>
 
   <div class="flex flex-wrap justify-center gap-16 mt-12">
     {organizers.map((org) => (
@@ -35,4 +35,4 @@ const organizers = (await getCollection("organizers")).sort(
       </div>
     ))}
   </div>
-</section>
+</Section>

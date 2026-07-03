@@ -1,0 +1,17 @@
+---
+interface Props {
+  id: string;
+  title: string;
+  size?: "sm" | "lg";
+  class?: string;
+}
+
+const { id, title, size = "sm", class: cls } = Astro.props;
+---
+
+<section id={id} class:list={[size === "lg" ? "section-lg" : "section-sm", "text-center", cls]}>
+  <h2 class="section-heading">
+    <a href={`#${id}`}>{title}</a>
+  </h2>
+  <slot />
+</section>

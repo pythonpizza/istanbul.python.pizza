@@ -1,12 +1,11 @@
 ---
 import { getCollection } from "astro:content";
-import AnchorHeading from "@components/AnchorHeading.astro";
+import Section from "@components/Section.astro";
 
 const sponsors = await getCollection("sponsors");
 ---
 
-<section id="sponsors" class="section-lg text-center">
-  <AnchorHeading anchor="sponsors">Sponsors</AnchorHeading>
+<Section id="sponsors" title="Sponsors" size="lg">
   <div class="flex flex-wrap items-center justify-center gap-16 mt-12">
     {sponsors.map((s) => (
       <a
@@ -23,4 +22,4 @@ const sponsors = await getCollection("sponsors");
       </a>
     ))}
   </div>
-</section>
+</Section>

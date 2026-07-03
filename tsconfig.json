@@ -6,7 +6,7 @@
       "@layouts/*": ["./src/layouts/*"],
       "@sections/*": ["./src/sections/*"],
       "@data/*": ["./src/data/*"],
-      "@prose/*": ["./src/prose/*"],
+      "@prose/*": ["./src/content/prose/*"],
       "@styles/*": ["./src/styles/*"]
     }
   }

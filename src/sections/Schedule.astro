@@ -1,5 +1,6 @@
 ---
-import AnchorHeading from "@components/AnchorHeading.astro";
+import Section from "@components/Section.astro";
+import Prose from "@components/Prose.astro";
 import CtaButton from "@components/CtaButton.astro";
 import ScheduleCard from "@components/ScheduleCard.astro";
 import { getScheduleData } from "@data/schedule";
@@ -7,14 +8,12 @@ import { getScheduleData } from "@data/schedule";
 const { events, speakerMap } = await getScheduleData();
 ---
 
-<section id="schedule" class="section-sm text-center">
-  <AnchorHeading anchor="schedule">Program</AnchorHeading>
-
+<Section id="schedule" title="Program">
   <CtaButton href="/compact-agenda/" class="px-6 py-2">Compact agenda 🔗</CtaButton>
 
-  <p class="prose-content mt-4">
+  <Prose class="mt-4">
     Join us for a full day of Python talks, coffee breaks, lightning talks, and pizza.
-  </p>
+  </Prose>
 
   {events.map((event, i) => {
     const speakers = (event.speakerIds ?? [])
@@ -28,4 +27,4 @@ const { events, speakerMap } = await getScheduleData();
       />
     );
   })}
-</section>
+</Section>

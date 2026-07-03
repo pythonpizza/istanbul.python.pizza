@@ -3,15 +3,17 @@ import { format } from "date-fns";
 import Base from "@layouts/Base.astro";
 import Header from "@components/Header.astro";
 import CtaButton from "@components/CtaButton.astro";
+import Section from "@components/Section.astro";
+import Prose from "@components/Prose.astro";
 import Footer from "@components/Footer.astro";
 import Hero from "@sections/Hero.astro";
-import About from "@sections/About.astro";
 import Sponsors from "@sections/Sponsors.astro";
 import Schedule from "@sections/Schedule.astro";
 import Organizers from "@sections/Organizers.astro";
-import CFPClosed from "@sections/CFPClosed.astro";
 import Venue from "@sections/Venue.astro";
-import Coc from "@sections/Coc.astro";
+import AboutContent from "@prose/about.mdx";
+import CfpContent from "@prose/cfp.mdx";
+import CocContent from "@prose/coc.mdx";
 import { site } from "@data/site";
 
 const eventDate = format(new Date(site.whenDatetime), "yyyy-MM-dd");
@@ -73,13 +75,19 @@ const eventDate = format(new Date(site.whenDatetime), "yyyy-MM-dd");
   </CtaButton>
   <main>
     <Hero />
-    <About />
+    <Section id="about" title="Python Pizza is Coming to Warsaw!">
+      <Prose><AboutContent /></Prose>
+    </Section>
     <Sponsors />
     <Schedule />
     <Organizers />
-    <CFPClosed />
+    <Section id="cfp" title="Proposals submission is now closed">
+      <Prose><CfpContent /></Prose>
+    </Section>
     <Venue />
-    <Coc />
+    <Section id="coc" title="Code of Conduct">
+      <Prose class="text-left [&_ul]:list-none [&_ul]:pl-0"><CocContent /></Prose>
+    </Section>
   </main>
   <Footer />
 

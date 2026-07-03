@@ -2,6 +2,7 @@
 import Base from "@layouts/Base.astro";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
+import Prose from "@components/Prose.astro";
 import { site } from "@data/site";
 import Content from "@prose/privacy-policy.mdx";
 ---
@@ -14,9 +15,9 @@ import Content from "@prose/privacy-policy.mdx";
   <Header />
   <main class="section-sm text-left pt-32">
     <h1 class="section-heading">Privacy Policy</h1>
-    <div class="prose-content [&_strong]:font-medium">
+    <Prose class="[&_strong]:font-medium">
       <Content />
-    </div>
+    </Prose>
   </main>
   <Footer />
 </Base>

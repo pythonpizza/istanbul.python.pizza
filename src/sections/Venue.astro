@@ -1,5 +1,6 @@
 ---
-import AnchorHeading from "@components/AnchorHeading.astro";
+import Section from "@components/Section.astro";
+import Prose from "@components/Prose.astro";
 import VenueContent from "@prose/venue.mdx";
 
 const venuePhotos = [
@@ -12,11 +13,10 @@ const venuePhotos = [
 ];
 ---
 
-<section id="venue" class="section-sm text-center">
-  <AnchorHeading anchor="venue">Venue</AnchorHeading>
-  <div class="prose-content text-left [&_ul]:mt-2 [&_ul]:mb-6">
+<Section id="venue" title="Venue">
+  <Prose class="text-left [&_ul]:mt-2 [&_ul]:mb-6">
     <VenueContent />
-  </div>
+  </Prose>
   <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-12">
     {venuePhotos.map((photo, i) => (
       <img
@@ -26,4 +26,4 @@ const venuePhotos = [
       />
     ))}
   </div>
-</section>
+</Section>
