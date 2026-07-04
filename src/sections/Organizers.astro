@@ -4,17 +4,24 @@ import { Image } from "astro:assets";
 import Section from "@components/Section.astro";
 import Prose from "@components/Prose.astro";
 import SocialLink from "@components/SocialLink.astro";
+import { event } from "@data/event";
 
-const organizers = (await getCollection("organizers")).sort(() => Math.random() - 0.5);
+const organizers = (await getCollection("organizers")).sort(
+  () => Math.random() - 0.5,
+);
 ---
 
 <Section id="organizers" title="Organizers">
   <Prose>
     <p>
-      Python Pizza is brought to life by volunteers. Everyone from our organizing team to our amazing
+      {event.name} is brought to life by volunteers. Everyone from our organizing team to our amazing
       speakers are donating their time to make this event happen.
     </p>
-    <p>By the community for the community.</p>
+    <p>
+      If you want to join us organize, and have fun,&nbsp;
+      <a href={`mailto:${event.contactEmail}`}>drop us a line</a>!
+    </p>
+    <p><strong><em>By the community, for the community.</em></strong></p>
   </Prose>
 
   <div class="grid grid-cols-2 place-items-center gap-x-4 gap-y-10 sm:flex sm:flex-wrap sm:justify-center sm:gap-16 mt-12">

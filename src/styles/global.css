@@ -69,11 +69,11 @@
 
 @layer components {
   .section-sm {
-    @apply max-w-3xl mx-auto px-8 py-8 md:py-12;
+    @apply max-w-3xl mx-auto px-8 py-8;
   }
 
   .section-lg {
-    @apply max-w-240 mx-auto px-8 py-8 md:py-12;
+    @apply max-w-240 mx-auto px-8 py-8;
   }
 
   .prose-content {
