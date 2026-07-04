@@ -24,7 +24,6 @@ const organizers = defineCollection({
     z.object({
       name: z.string(),
       image: image(),
-      index: z.number().optional(),
       links: z.array(linkSchema).optional(),
     }),
 });

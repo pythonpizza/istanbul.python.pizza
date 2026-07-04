@@ -1,17 +1,17 @@
 import { event } from "@data/event";
 
-export const dataController = "the organizers of Python Pizza Istanbul";
+export const dataController = `the organizers of ${event.name}`;
 
 <div class="prose-banner">
-  <p class="m-0">Last updated: 3 July 2026</p>
-  <p class="m-0">This policy explains how we handle personal information for Python Pizza Istanbul.</p>
+  <p class="m-0">Last updated: 4 July 2026</p>
+  <p class="m-0">This policy explains how we handle personal information for {event.name}.</p>
 </div>
 
 <section class="prose-section">
 
 ## <span class="text-primary font-mono">01</span> Handling of personal information
 
-You authorize {dataController} ("Data Controller") to handle personal information in connection with Python Pizza Istanbul ("Event") for the purposes and for the period of time specified below.
+You authorize {dataController} ("Data Controller") to handle personal information in connection with {event.name} ("Event") for the purposes and for the period of time specified below.
 
 Tickets are sold by {event.ticketSeller} through Pretix. Information submitted during ticket purchase may therefore be processed by {event.ticketSeller} and Pretix as needed to complete ticket sales and operate admission.
 
@@ -30,7 +30,7 @@ A few third-party services help us run the website, ticketing, and the conferenc
 <div class="grid gap-6 mt-6">
   <div class="prose-callout">
     <p class="mb-1"><strong>Gmail</strong></p>
-    <p class="m-0">The Python Pizza Istanbul Team may rely on Gmail for direct and group emails to communicate internally and externally. If you email us, your information may be collected for the purpose of communicating with you about the Event.</p>
+    <p class="m-0">The {event.name} Team may rely on Gmail for direct and group emails to communicate internally and externally. If you email us, your information may be collected for the purpose of communicating with you about the Event.</p>
   </div>
   <div class="prose-callout">
     <p class="mb-1"><strong>Google Forms</strong></p>

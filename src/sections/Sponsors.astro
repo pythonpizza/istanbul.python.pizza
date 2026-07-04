@@ -1,11 +1,22 @@
 ---
 import { getCollection } from "astro:content";
 import Section from "@components/Section.astro";
+import Prose from "@components/Prose.astro";
+import { event } from "@data/event";
 
 const sponsors = await getCollection("sponsors");
 ---
 
 <Section id="sponsors" title="Sponsors" size="lg">
+  <Prose class="text-center">
+    <p>
+      We are looking for sponsors for {event.name}. If you
+      are interested in sponsoring, please reach out to us at&nbsp;
+      <a href={`mailto:${event.contactEmail}?subject=Sponsoring ${event.name}`}>
+        {event.contactEmail}
+      </a>.
+    </p>
+  </Prose>
   <div class="flex flex-wrap items-center justify-center gap-16 mt-12">
     {sponsors.map((s) => (
       <a

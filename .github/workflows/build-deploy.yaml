@@ -1,4 +1,4 @@
-name: Build and Deploy Python Pizza Istanbul to Pages
+name: Build and Deploy Site to Pages
 
 on:
   workflow_dispatch:

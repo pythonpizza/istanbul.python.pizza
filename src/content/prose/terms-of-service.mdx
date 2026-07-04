@@ -2,14 +2,14 @@ import { event } from "@data/event";
 
 <div class="prose-banner">
   <p class="m-0">Last updated: 3 July 2026</p>
-  <p class="m-0">These terms apply to tickets and attendance for Python Pizza Istanbul.</p>
+  <p class="m-0">These terms apply to tickets and attendance for {event.name}.</p>
 </div>
 
 <section class="prose-section">
 
 ## <span class="text-primary font-mono">01</span> Organizer
 
-Python Pizza Istanbul is organized by volunteers. For questions about these terms, contact us at <a href={`mailto:${event.contactEmail}`}>{event.contactEmail}</a>.
+{event.name} is organized by volunteers. For questions about these terms, contact us at <a href={`mailto:${event.contactEmail}`}>{event.contactEmail}</a>.
 
 </section>
 
@@ -45,7 +45,7 @@ We may change the programme, speakers, schedule, venue details, or other Event a
 
 ## <span class="text-primary font-mono">05</span> Code of Conduct
 
-All attendees, speakers, sponsors, volunteers, and organizers must follow the Python Pizza Istanbul Code of Conduct. We may refuse admission or remove anyone who violates it, without refund where appropriate.
+All attendees, speakers, sponsors, volunteers, and organizers must follow the {event.name} Code of Conduct. We may refuse admission or remove anyone who violates it, without refund where appropriate.
 
 </section>
 
@@ -83,6 +83,6 @@ To the fullest extent permitted by law, the organizer is not liable for indirect
 
 ## <span class="text-primary font-mono">09</span> Privacy
 
-We process personal information as described in the Python Pizza Istanbul Privacy Policy.
+We process personal information as described in the {event.name} Privacy Policy.
 
 </section>

@@ -1,4 +1,4 @@
-name: Build Python Pizza Istanbul
+name: Build Site
 
 on: pull_request
 

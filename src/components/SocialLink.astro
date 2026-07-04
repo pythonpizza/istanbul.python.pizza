@@ -5,9 +5,10 @@ interface Props {
   label: string;
   ariaLabel?: string;
   title?: string;
+  size?: number;
 }
 
-const { url, icon, label, ariaLabel = label, title } = Astro.props;
+const { url, icon, label, ariaLabel = label, title, size = 16 } = Astro.props;
 ---
 
 <a
@@ -18,5 +19,5 @@ const { url, icon, label, ariaLabel = label, title } = Astro.props;
   title={title}
   class="social-link"
 >
-  <img src={icon} alt={label} width="16" height="16" />
+  <img src={icon} alt={label} width={size} height={size} />
 </a>

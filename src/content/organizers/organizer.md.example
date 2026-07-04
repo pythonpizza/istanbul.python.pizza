@@ -1,7 +1,6 @@
 ---
 name: Example Organizer
 image: ../../assets/organizers/example.jpg
-index: 1
 links:
   - url: https://example.com
     icon: /socials/website.svg
