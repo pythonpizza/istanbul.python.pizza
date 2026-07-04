@@ -1,5 +1,4 @@
-export const contactEmail = "istanbulpythonpizza@gmail.com";
-export const ticketSeller = "EuroPython Society";
+import { event } from "@data/event";
 
 <div class="prose-banner">
   <p class="m-0">Last updated: 3 July 2026</p>
@@ -10,7 +9,7 @@ export const ticketSeller = "EuroPython Society";
 
 ## <span class="text-primary font-mono">01</span> Organizer
 
-Python Pizza Istanbul is organized by volunteers. For questions about these terms, contact us at <a href={`mailto:${contactEmail}`}>{contactEmail}</a>.
+Python Pizza Istanbul is organized by volunteers. For questions about these terms, contact us at <a href={`mailto:${event.contactEmail}`}>{event.contactEmail}</a>.
 
 </section>
 
@@ -18,7 +17,7 @@ Python Pizza Istanbul is organized by volunteers. For questions about these term
 
 ## <span class="text-primary font-mono">02</span> Tickets
 
-Tickets are sold by {ticketSeller} through Pretix. By buying or using a ticket, you agree to these terms, the ticket conditions shown during checkout, and Pretix terms that apply to the purchase flow.
+Tickets are sold by {event.ticketSeller} through Pretix. By buying or using a ticket, you agree to these terms, the ticket conditions shown during checkout, and Pretix terms that apply to the purchase flow.
 
 A valid ticket may be required for admission. We may ask attendees to show a ticket confirmation, ID, or other reasonable proof needed to verify a ticket.
 

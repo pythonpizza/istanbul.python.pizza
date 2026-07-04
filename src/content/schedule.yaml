@@ -1,1 +1,15 @@
+# Example entries, copy the shape once the schedule is ready.
+#
+# - id: talk-example
+#   title: "Example Talk Title"
+#   speakerIds: [example-speaker]
+#   when: "2026-01-01T10:00:00+03:00"
+#   until: "2026-01-01T10:12:00+03:00"
+#   isKeynote: false
+#
+# - id: break-1
+#   label: "Coffee Break"
+#   when: "2026-01-01T10:12:00+03:00"
+#   until: "2026-01-01T10:30:00+03:00"
+
 []

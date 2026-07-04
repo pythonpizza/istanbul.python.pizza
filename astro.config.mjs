@@ -8,7 +8,17 @@ import compress from "astro-compress";
 export default defineConfig({
   site: "https://istanbul.python.pizza",
   redirects: {
-    "/schedule": "/compact-schedule",
+    "/about": "/#about",
+    "/schedule": "/#schedule",
+    "/sponsors": "/#sponsors",
+    "/compact": "/compact-schedule",
+    "/program": "/#schedule",
+    "/organizers": "/#organizers",
+    "/cfp": "/#cfp",
+    "/venue": "/#venue",
+    "/coc": "/#coc",
+    "/terms": "/terms-of-service",
+    "/privacy": "/privacy-policy",
   },
   trailingSlash: "ignore",
   build: {

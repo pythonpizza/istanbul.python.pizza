@@ -2,23 +2,13 @@
 import { getImage } from "astro:assets";
 import Logo from "@components/Logo.astro";
 import cityBg from "@assets/city.jpg";
+import { menuItems } from "@data/navigation";
 
 const optimizedCityBg = await getImage({
   src: cityBg,
   format: "avif",
   width: 1200,
 });
-
-const menuItems = [
-  { href: "/#about", label: "About 🍕" },
-  { href: "/#sponsors", label: "Sponsors 💛" },
-  { href: "/#schedule", label: "Program 📅" },
-  { href: "/compact-agenda/", label: "Compact agenda 🔗" },
-  { href: "/#organizers", label: "Organizers 👩🏻" },
-  { href: "/#cfp", label: "CFP 🙋🏻‍♀️" },
-  { href: "/#venue", label: "Venue 🏰" },
-  { href: "/#coc", label: "CoC 💂" },
-];
 ---
 
 <header

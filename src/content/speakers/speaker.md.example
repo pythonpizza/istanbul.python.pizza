@@ -1,0 +1,11 @@
+---
+name: Example Speaker
+image: ../../assets/speakers/example.jpg
+links:
+  - url: https://example.com
+    icon: /socials/website.svg
+    label: Website
+  - url: https://github.com/example
+    icon: /socials/github.svg
+    label: GitHub
+---

@@ -1,0 +1,12 @@
+---
+name: Example Organizer
+image: ../../assets/organizers/example.jpg
+index: 1
+links:
+  - url: https://example.com
+    icon: /socials/website.svg
+    label: Website
+  - url: https://github.com/example
+    icon: /socials/github.svg
+    label: GitHub
+---

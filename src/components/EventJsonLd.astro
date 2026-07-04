@@ -1,0 +1,22 @@
+---
+import { event } from "@data/event";
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "ConferenceEvent",
+  name: event.name,
+  url: Astro.site?.href,
+  offers: {
+    "@type": "Offer",
+    name: "Tickets",
+    url: event.ticketsUrl,
+  },
+  hasSponsorshipOffer: {
+    "@type": "Offer",
+    name: "Sponsor Packages",
+    url: new URL("#sponsors", Astro.site).href,
+  },
+};
+---
+
+<script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />

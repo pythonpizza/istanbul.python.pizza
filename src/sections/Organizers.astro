@@ -6,38 +6,36 @@ import Prose from "@components/Prose.astro";
 import SocialLink from "@components/SocialLink.astro";
 
 const organizers = (await getCollection("organizers")).sort(
-  (a, b) => a.data.index - b.data.index,
+  (a, b) => (a.data.index ?? Infinity) - (b.data.index ?? Infinity),
 );
 ---
 
-{organizers.length > 0 && (
-  <Section id="organizers" title="Organizers">
-    <Prose>
-      <p>
-        Python Pizza is brought to life by volunteers. Everyone from our organizing team to our amazing
-        speakers are donating their time to make this event happen.
-      </p>
-      <p>By the community for the community.</p>
-    </Prose>
+<Section id="organizers" title="Organizers">
+  <Prose>
+    <p>
+      Python Pizza is brought to life by volunteers. Everyone from our organizing team to our amazing
+      speakers are donating their time to make this event happen.
+    </p>
+    <p>By the community for the community.</p>
+  </Prose>
 
-    <div class="grid grid-cols-2 place-items-center gap-x-4 gap-y-10 sm:flex sm:flex-wrap sm:justify-center sm:gap-16 mt-12">
-      {organizers.map((org) => (
-        <div class="flex flex-col items-center gap-3">
-          <Image
-            src={org.data.image}
-            alt={org.data.name}
-            width={400}
-            format="avif"
-            class="w-28 h-28 sm:w-44 sm:h-44 rounded-full object-cover avatar-shadow"
-          />
-          <h3 class="m-0 flex items-center justify-center gap-1 flex-wrap text-base font-medium leading-snug">
-            <span>{org.data.name}</span>
-            {org.data.links?.map((link) => (
-              <SocialLink url={link.url} icon={link.icon} label={link.label} title={link.label} />
-            ))}
-          </h3>
-        </div>
-      ))}
-    </div>
-  </Section>
-)}
+  <div class="grid grid-cols-2 place-items-center gap-x-4 gap-y-10 sm:flex sm:flex-wrap sm:justify-center sm:gap-16 mt-12">
+    {organizers.map((org) => (
+      <div class="flex flex-col items-center gap-3">
+        <Image
+          src={org.data.image}
+          alt={org.data.name}
+          width={400}
+          format="avif"
+          class="w-28 h-28 sm:w-44 sm:h-44 rounded-full object-cover avatar-shadow"
+        />
+        <h3 class="m-0 flex items-center justify-center gap-1 flex-wrap text-base font-medium leading-snug">
+          <span>{org.data.name}</span>
+          {org.data.links?.map((link) => (
+            <SocialLink url={link.url} icon={link.icon} label={link.label} title={link.label} />
+          ))}
+        </h3>
+      </div>
+    ))}
+  </div>
+</Section>

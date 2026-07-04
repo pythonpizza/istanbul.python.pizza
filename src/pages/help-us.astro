@@ -4,17 +4,16 @@ import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import Prose from "@components/Prose.astro";
 import { event } from "@data/event";
-import Content from "@prose/terms-of-service.mdx";
+import Content from "@prose/help-us.mdx";
 ---
 
 <Base
-  title={`Terms of Service | ${event.name}`}
-  description={`Terms of Service for ${event.name} tickets and attendance.`}
-  noindex
+  title={`Help Us Find a Venue | ${event.name}`}
+  description={`${event.name} is looking for a venue (or venue sponsor) in Istanbul - here's how you can help.`}
 >
   <Header />
   <main class="section-sm text-left pt-32">
-    <h1 class="section-heading">Terms of Service</h1>
+    <h1 class="section-heading">Help Us Find a Venue</h1>
     <Prose class="[&_strong]:font-medium">
       <Content />
     </Prose>

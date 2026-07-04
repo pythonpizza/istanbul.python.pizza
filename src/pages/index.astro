@@ -5,65 +5,54 @@ import CtaButton from "@components/CtaButton.astro";
 import Section from "@components/Section.astro";
 import Prose from "@components/Prose.astro";
 import Footer from "@components/Footer.astro";
+import EventJsonLd from "@components/EventJsonLd.astro";
 import Hero from "@sections/Hero.astro";
 import Sponsors from "@sections/Sponsors.astro";
 // import Schedule from "@sections/Schedule.astro"; // re-enable once the program is set
-// import Organizers from "@sections/Organizers.astro"; // re-enable once organizers are confirmed
-import Venue from "@sections/Venue.astro";
+import Organizers from "@sections/Organizers.astro"; // re-enable once organizers are confirmed
+// import Venue from "@sections/Venue.astro";
 import AboutContent from "@prose/about.mdx";
 import CfpContent from "@prose/cfp.mdx";
 import CocContent from "@prose/coc.mdx";
-import { site } from "@data/site";
+import { event } from "@data/event";
+import { socials } from "@data/socials";
+
+const twitter = socials.find((s) => s.handle);
 ---
 
 <Base
-  title={site.pageTitle}
-  description={site.socialDescription}
+  title={event.name}
+  description={event.description}
   ogImage={new URL("/social-image.jpg", Astro.site).href}
 >
   <Fragment slot="head">
-    <meta property="og:title" content={site.pageTitle} />
-    <meta property="og:description" content={site.socialDescription} />
-    <meta name="twitter:site" content="@pythonpizzaconf" />
+    <meta property="og:title" content={event.name} />
+    <meta property="og:description" content={event.description} />
+    {twitter && <meta name="twitter:site" content={twitter.handle} />}
     <meta name="twitter:image:alt" content="Conference logo" />
-    <script type="application/ld+json" is:inline set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "ConferenceEvent",
-      name: site.pageTitle,
-      url: Astro.site?.href,
-      offers: {
-        "@type": "Offer",
-        name: "Tickets",
-        url: site.ticketsUrl,
-      },
-      hasSponsorshipOffer: {
-        "@type": "Offer",
-        name: "Sponsor Packages",
-        url: new URL("#sponsors", Astro.site).href,
-      },
-    })} />
+    <EventJsonLd />
   </Fragment>
 
   <Header />
   <CtaButton
     id="floating-cta"
-    href={site.cta.href}
+    href={event.cta.href}
     class="cta-hidden fixed right-4 bottom-4 md:right-8 md:bottom-8 z-20 min-w-40 md:min-w-44 shadow-lg"
   >
-    {site.cta.label}
+    {event.cta.label}
   </CtaButton>
   <main>
     <Hero />
-    <Section id="about" title="Python Pizza is Coming to Istanbul!">
+    <Section id="about" title={`Python Pizza is Coming to ${event.city}!`}>
       <Prose><AboutContent /></Prose>
     </Section>
     <Sponsors />
     {/* <Schedule /> */}
-    {/* <Organizers /> */}
-    <Section id="cfp" title="Call for Proposals — opening soon">
+    <Organizers />
+    <Section id="cfp" title="Call for Proposals - opening soon">
       <Prose><CfpContent /></Prose>
     </Section>
-    <Venue />
+    {/* <Venue /> */}
     <Section id="coc" title="Code of Conduct">
       <Prose class="text-left [&_ul]:list-none [&_ul]:pl-0"><CocContent /></Prose>
     </Section>

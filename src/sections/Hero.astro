@@ -2,7 +2,7 @@
 import { getImage } from "astro:assets";
 import CtaButton from "@components/CtaButton.astro";
 import Wave from "@components/Wave.astro";
-import { site } from "@data/site";
+import { event } from "@data/event";
 import cityBg from "@assets/city.jpg";
 
 const optimizedCityBg = await getImage({
@@ -20,17 +20,17 @@ const optimizedCityBg = await getImage({
 
   <div class="relative z-10 m-auto p-8 text-center">
     <h1 class="text-white text-[2.6rem] md:text-[5rem] font-mono font-medium text-center leading-tight mb-4">
-      {site.siteHeading}
+      {event.name}
     </h1>
-    <p class="hero-subtext md:text-[2.2rem]">{site.subHeading}</p>
-    <p class="hero-subtext md:text-[2.2rem]">Date to be announced</p>
+    <p class="hero-subtext md:text-[2.2rem]">{event.subHeading}</p>
+    <p class="hero-subtext md:text-[2.2rem]">{event.whenDisplay}</p>
     <CtaButton
       id="hero-cta"
-      href={site.cta.href}
+      href={event.cta.href}
       variant="outline"
       class="mt-12 px-10 py-4 text-lg md:text-xl"
     >
-      {site.cta.label}
+      {event.cta.label}
     </CtaButton>
   </div>
 

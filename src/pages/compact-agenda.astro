@@ -1,27 +1,27 @@
 ---
 import Base from "@layouts/Base.astro";
-import { getScheduleData, formatEventTime } from "@data/schedule";
-import { site } from "@data/site";
+import { getScheduleData, formatSessionTime } from "@data/schedule";
+import { event } from "@data/event";
 
-const { events, speakerMap } = await getScheduleData();
+const { sessions, speakerMap } = await getScheduleData();
 
-const fmt = formatEventTime;
-const title = (e: (typeof events)[number]) => e.title ?? e.label ?? "";
-const speakerNames = (e: (typeof events)[number]) =>
-  e.speakerIds
+const fmt = formatSessionTime;
+const title = (s: (typeof sessions)[number]) => s.title ?? s.label ?? "";
+const speakerNames = (s: (typeof sessions)[number]) =>
+  s.speakerIds
     ?.map((id) => speakerMap[id]?.name)
     .filter(Boolean)
     .join(", ") ?? "";
 ---
 
 <Base
-  title={`Compact Agenda | ${site.pageTitle}`}
-  description={`Compact day-of agenda for ${site.pageTitle}.`}
+  title={`Compact Agenda | ${event.name}`}
+  description={`Compact day-of agenda for ${event.name}.`}
 >
   <div id="page" class="min-h-screen">
     <header class="sticky top-0 z-10 grid grid-cols-[2.5rem_1fr_2.5rem] items-center gap-2 border-b backdrop-blur-md px-4 md:px-8 py-3">
       <h1 class="m-0 font-mono text-lg md:text-2xl leading-tight text-center col-start-2">
-        Compact Agenda — {site.pageTitle}
+        Compact Agenda - {event.name}
       </h1>
       <button
         id="theme-toggle"
@@ -35,23 +35,23 @@ const speakerNames = (e: (typeof events)[number]) =>
     </header>
 
     <div class="max-w-4xl mx-auto px-4 md:px-8 pt-5 pb-24">
-      {events.length === 0 && <p class="text-center">Agenda will be announced soon.</p>}
+      {sessions.length === 0 && <p class="text-center">Agenda will be announced soon.</p>}
       <ol id="agenda-list" class="list-none grid gap-2 m-0 p-0">
-        {events.map((event, i) => {
-          const speakers = speakerNames(event);
-          const t = title(event);
+        {sessions.map((session, i) => {
+          const speakers = speakerNames(session);
+          const t = title(session);
           return (
             <li
               data-index={i}
-              data-when={event.when ?? ""}
-              data-until={event.until ?? ""}
+              data-when={session.when ?? ""}
+              data-until={session.until ?? ""}
               class="agenda-item grid grid-cols-[minmax(3.6rem,auto)_minmax(0,1fr)_auto] grid-rows-[auto_auto] items-start gap-x-2 md:gap-x-3 rounded-lg border px-3 md:px-3 py-3 md:py-2"
             >
               <span class="time font-mono text-xs md:text-xs font-medium leading-tight whitespace-nowrap col-start-1 row-start-1">
-                {event.when ? fmt(event.when) : ""}
+                {session.when ? fmt(session.when) : ""}
               </span>
 
-              <div class="content min-w-0 col-[1/-1] row-start-2">
+              <div class="content min-w-0 col-span-full row-start-2">
                 {speakers && (
                   <span class="block text-[11px] leading-tight opacity-70 overflow-anywhere mb-1">
                     {speakers}

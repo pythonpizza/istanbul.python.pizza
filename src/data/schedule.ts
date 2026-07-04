@@ -1,7 +1,7 @@
 import { getCollection, type CollectionEntry } from "astro:content";
 import { format } from "date-fns";
 
-export type ScheduleEvent = CollectionEntry<"schedule">["data"];
+export type Session = CollectionEntry<"schedule">["data"];
 export type SpeakerRecord = CollectionEntry<"speakers">["data"] & {
   id: string;
 };
@@ -16,7 +16,7 @@ export async function getScheduleData() {
     speakerEntries.map((e) => [e.id, { id: e.id, ...e.data }]),
   );
 
-  const events = scheduleEntries
+  const sessions = scheduleEntries
     .map((e) => e.data)
     .sort((a, b) => {
       if (!a.when) return -1;
@@ -24,7 +24,7 @@ export async function getScheduleData() {
       return new Date(a.when).getTime() - new Date(b.when).getTime();
     });
 
-  return { events, speakerMap };
+  return { sessions, speakerMap };
 }
 
-export const formatEventTime = (t: string) => format(new Date(t), "HH:mm");
+export const formatSessionTime = (t: string) => format(new Date(t), "HH:mm");

@@ -1,6 +1,6 @@
-export const contactEmail = "istanbulpythonpizza@gmail.com";
+import { event } from "@data/event";
+
 export const dataController = "the organizers of Python Pizza Istanbul";
-export const ticketSeller = "EuroPython Society";
 
 <div class="prose-banner">
   <p class="m-0">Last updated: 3 July 2026</p>
@@ -13,11 +13,11 @@ export const ticketSeller = "EuroPython Society";
 
 You authorize {dataController} ("Data Controller") to handle personal information in connection with Python Pizza Istanbul ("Event") for the purposes and for the period of time specified below.
 
-Tickets are sold by {ticketSeller} through Pretix. Information submitted during ticket purchase may therefore be processed by {ticketSeller} and Pretix as needed to complete ticket sales and operate admission.
+Tickets are sold by {event.ticketSeller} through Pretix. Information submitted during ticket purchase may therefore be processed by {event.ticketSeller} and Pretix as needed to complete ticket sales and operate admission.
 
 We process personal information only as needed to organize the Event, communicate with participants, manage proposals and feedback, sell and verify tickets, publish the Event programme, and keep participants safe.
 
-You can revoke your agreement at any time by sending an email to <a href={`mailto:${contactEmail}`}>{contactEmail}</a>.
+You can revoke your agreement at any time by sending an email to <a href={`mailto:${event.contactEmail}`}>{event.contactEmail}</a>.
 
 </section>
 

@@ -24,12 +24,12 @@ const organizers = defineCollection({
     z.object({
       name: z.string(),
       image: image(),
-      index: z.number(),
+      index: z.number().optional(),
       links: z.array(linkSchema).optional(),
     }),
 });
 
-const eventSchema = z.object({
+const sessionSchema = z.object({
   label: z.string().optional(),
   title: z.string().optional(),
   speakerIds: z.array(z.string()).optional(),
@@ -40,7 +40,7 @@ const eventSchema = z.object({
 
 const schedule = defineCollection({
   loader: file("./src/content/schedule.yaml"),
-  schema: eventSchema,
+  schema: sessionSchema,
 });
 
 const sponsors = defineCollection({

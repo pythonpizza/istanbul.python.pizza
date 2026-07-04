@@ -5,28 +5,26 @@ import CtaButton from "@components/CtaButton.astro";
 import ScheduleCard from "@components/ScheduleCard.astro";
 import { getScheduleData } from "@data/schedule";
 
-const { events, speakerMap } = await getScheduleData();
+const { sessions, speakerMap } = await getScheduleData();
 ---
 
-{events.length > 0 && (
-  <Section id="schedule" title="Program">
-    <CtaButton href="/compact-agenda/" class="px-6 py-2">Compact agenda 🔗</CtaButton>
+<Section id="schedule" title="Program">
+  <CtaButton href="/compact-agenda/" class="px-6 py-2">Compact agenda 🔗</CtaButton>
 
-    <Prose class="mt-4">
-      Join us for a full day of Python talks, coffee breaks, lightning talks, and pizza.
-    </Prose>
+  <Prose class="mt-4">
+    Join us for a full day of Python talks, coffee breaks, lightning talks, and pizza.
+  </Prose>
 
-    {events.map((event, i) => {
-      const speakers = (event.speakerIds ?? [])
-        .map((id) => speakerMap[id])
-        .filter(Boolean);
-      return (
-        <ScheduleCard
-          event={event}
-          speakers={speakers}
-          invert={i % 2 === 0}
-        />
-      );
-    })}
-  </Section>
-)}
+  {sessions.map((session, i) => {
+    const speakers = (session.speakerIds ?? [])
+      .map((id) => speakerMap[id])
+      .filter(Boolean);
+    return (
+      <ScheduleCard
+        session={session}
+        speakers={speakers}
+        invert={i % 2 === 0}
+      />
+    );
+  })}
+</Section>
