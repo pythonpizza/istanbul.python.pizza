@@ -4,20 +4,20 @@ import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import Prose from "@components/Prose.astro";
 import { event } from "@data/event";
-import Content from "@prose/privacy-policy.mdx";
+import Content from "@prose/privacy-policy-tr.mdx";
 ---
 
 <Base
-  title={`Privacy Policy | ${event.name}`}
-  description={`Privacy Policy for ${event.name}.`}
+  title={`Gizlilik Politikası | ${event.name}`}
+  description={`${event.name} için Gizlilik Politikası.`}
   noindex
 >
   <Header />
   <main class="section-sm text-left pt-32">
-    <h1 class="section-heading">Privacy Policy</h1>
+    <h1 class="section-heading">Gizlilik Politikası</h1>
     <Prose class="[&_strong]:font-medium">
       <div class="text-center mb-8">
-        <a href="/privacy-policy-tr/">Türkçe</a>
+        <a href="/privacy-policy/">English</a>
       </div>
       <Content />
     </Prose>

@@ -1,52 +1,58 @@
-import { event } from "@data/event";
-
-export const dataController = `the organizers of ${event.name}`;
-
 <div class="prose-banner">
-  <p class="m-0">Last updated: 4 July 2026</p>
-  <p class="m-0">This policy explains how we handle personal information for {event.name}.</p>
+  <p class="m-0">Last updated: 5 July 2026</p>
+  <p class="m-0">This policy explains how the organizers of Python Pizza Istanbul handle personal data in connection with Python Pizza Istanbul (the "Event"), in line with Turkey's Law on the Protection of Personal Data No. 6698 ("KVKK").</p>
 </div>
 
 <section class="prose-section">
 
-## <span class="text-primary font-mono">01</span> Handling of personal information
+## <span class="text-primary font-mono">01</span> Who is responsible for your data
 
-You authorize {dataController} ("Data Controller") to handle personal information in connection with {event.name} ("Event") for the purposes and for the period of time specified below.
+The organizers of Python Pizza Istanbul act, jointly and as natural persons ("gerçek kişi"), as the Data Controller ("veri sorumlusu") for personal data processed in connection with the Event, within the meaning of KVKK Article 3. The current organizers are named on our <a href="/#organizers">Organizers</a> page.
 
-Tickets are sold by {event.ticketSeller} through Pretix. Information submitted during ticket purchase may therefore be processed by {event.ticketSeller} and Pretix as needed to complete ticket sales and operate admission.
-
-We process personal information only as needed to organize the Event, communicate with participants, manage proposals and feedback, sell and verify tickets, publish the Event programme, and keep participants safe.
-
-You can revoke your agreement at any time by sending an email to <a href={`mailto:${event.contactEmail}`}>{event.contactEmail}</a>.
+If you have any question about your data, or want to exercise any of the rights listed in Section 06, you can reach us at <a href="mailto:organizers@pythonturkiye.org">organizers@pythonturkiye.org</a>. This is also the correct address to use for any KVKK-related request.
 
 </section>
 
 <section class="prose-section">
 
-## <span class="text-primary font-mono">02</span> Third-party services
-
-A few third-party services help us run the website, ticketing, and the conference. We may share some information with them as part of their service. We select services that we believe comply with EU data privacy regulations, but this list might not be exhaustive.
+## <span class="text-primary font-mono">02</span> What we process, why, and on what legal basis
 
 <div class="grid gap-6 mt-6">
   <div class="prose-callout">
-    <p class="mb-1"><strong>Gmail</strong></p>
-    <p class="m-0">The {event.name} Team may rely on Gmail for direct and group emails to communicate internally and externally. If you email us, your information may be collected for the purpose of communicating with you about the Event.</p>
+    <p class="mb-1"><strong>Ticket sales and event admission</strong></p>
+    <p class="m-0">Name, email, and payment-related data submitted at checkout through TBA. Processed because it's necessary for the performance of the ticket purchase contract (KVKK Art. 5/2-c).</p>
   </div>
   <div class="prose-callout">
-    <p class="mb-1"><strong>Google Forms</strong></p>
-    <p class="m-0">We may use Google Forms for announcements, call for proposals, feedback, and similar forms.</p>
+    <p class="mb-1"><strong>Communicating with participants</strong></p>
+    <p class="m-0">Email correspondence about the Event (schedule changes, logistics, confirmations), handled through Zoho Mail. Processed on the basis of our legitimate interest in running the Event and keeping participants informed (KVKK Art. 5/2-f).</p>
   </div>
   <div class="prose-callout">
-    <p class="mb-1"><strong>Google Drive, Docs, and Sheets</strong></p>
-    <p class="m-0">We may use Google Drive to store documents, spreadsheets, and similar files needed to run the Event. Some of these files may include personal data.</p>
+    <p class="mb-1"><strong>Managing proposals (Call for Proposals)</strong></p>
+    <p class="m-0">Name, email, and talk/bio details submitted through our CfP form (Google Forms and Google Drive). Processed on the basis of our legitimate interest in reviewing and organizing the Event programme (KVKK Art. 5/2-f).</p>
   </div>
   <div class="prose-callout">
-    <p class="mb-1"><strong>YouTube</strong></p>
-    <p class="m-0">We may stream or publish talk recordings on YouTube after the Event.</p>
+    <p class="mb-1"><strong>Publishing the Event programme</strong></p>
+    <p class="m-0">Accepted speakers' names, talk titles, and abstracts, published on our website and its public GitHub repository. We ask for your explicit, separate consent (KVKK Art. 5/1) before publishing this, after you've confirmed your acceptance as a speaker.</p>
   </div>
   <div class="prose-callout">
-    <p class="mb-1"><strong>Pretix</strong></p>
-    <p class="m-0">We use Pretix for ticketing services. If you buy a ticket, Pretix uses cookies to keep track of your cart and improve the ordering process. Data submitted to Pretix is stored on servers in Germany. <a href="https://pretix.eu/about/en/privacy" target="_blank" rel="noopener noreferrer">Privacy policy</a></p>
+    <p class="mb-1"><strong>Talk recordings</strong></p>
+    <p class="m-0">Video of your talk, if recorded and published on YouTube. Processed only with your separate explicit consent (KVKK Art. 5/1), obtained ahead of the recording.</p>
+  </div>
+  <div class="prose-callout">
+    <p class="mb-1"><strong>Keeping participants safe</strong></p>
+    <p class="m-0">Information related to Code of Conduct reports or safety incidents at the Event. Processed on the basis of our legitimate interest in the safety of attendees (KVKK Art. 5/2-f), and, where relevant, our legal obligations as an event organizer (KVKK Art. 5/2-ç).</p>
+  </div>
+  <div class="prose-callout">
+    <p class="mb-1"><strong>Dietary, accessibility, and health-related needs</strong></p>
+    <p class="m-0">If you choose to share this information at checkout (for example, for catering or venue accommodations), it's a special category of personal data under KVKK, so we only process it with your explicit consent (KVKK Art. 6). Sharing it is entirely optional and isn't required to complete your ticket purchase. It's kept internal to the organizing team, not shared with caterers or venues, and deleted shortly after the Event once logistics are finished.</p>
+  </div>
+  <div class="prose-callout">
+    <p class="mb-1"><strong>Website analytics</strong></p>
+    <p class="m-0">We use GoatCounter to see aggregate visit statistics (like page views and browser type). GoatCounter doesn't use cookies and doesn't store IP addresses or any other identifier, so this doesn't involve processing your personal data.</p>
+  </div>
+  <div class="prose-callout">
+    <p class="mb-1"><strong>Newsletter</strong></p>
+    <p class="m-0">If you opt in to hear about future editions of the Event, we use your email address for that purpose alone. This is entirely optional, processed only with your separate, explicit consent (KVKK Art. 5/1), and isn't required to buy a ticket, submit a proposal, or attend.</p>
   </div>
 </div>
 
@@ -54,27 +60,96 @@ A few third-party services help us run the website, ticketing, and the conferenc
 
 <section class="prose-section">
 
-## <span class="text-primary font-mono">03</span> Processors
+## <span class="text-primary font-mono">03</span> How we collect your data
 
-The Data Controller handles personal information. The information may also be processed by:
-
-- Google Ireland Ltd, Gordon House, Barrow Street, Dublin 4, Ireland
-- YouTube, LLC, 901 Cherry Ave., San Bruno, CA 94066, USA
-- pretix GmbH, Berthold-Mogel-Straße 1, 69126 Heidelberg, Germany
+We collect personal data directly from you: when you buy a ticket, submit a proposal, fill in a feedback form, or email us. We don't collect personal data about you from any other source.
 
 </section>
 
 <section class="prose-section">
 
-## <span class="text-primary font-mono">04</span> Your rights
+## <span class="text-primary font-mono">04</span> Who we share your data with
 
-Under applicable data protection laws, you have the right to:
+A few third-party services help us run the website, ticketing, and the conference. We share the minimum data needed for each service to do its job.
 
-- Revoke your agreement at any time.
-- Request information about which personal information we process and why.
-- Request access to your personal information.
-- Ask us to correct or update your personal information.
-- Ask us to delete your personal information.
-- Contact us or the Polish data protection authority if you have concerns about our handling of your data.
+<div class="grid gap-6 mt-6">
+  <div class="prose-callout">
+    <p class="mb-1"><strong>Zoho Mail</strong></p>
+    <p class="m-0">The Python Pizza Istanbul Team uses Zoho Mail (Zoho.eu) for direct and group emails to communicate internally and externally. If you email us, your message and contact details may be processed for the purpose of replying to you about the Event. Zoho's EU service hosts data on servers in the Netherlands.</p>
+  </div>
+  <div class="prose-callout">
+    <p class="mb-1"><strong>Google Forms and Google Drive</strong></p>
+    <p class="m-0">We use Google Forms for CfP submissions, and feedback, and Google Drive to store related documents and spreadsheets. Some of these files may include personal data.</p>
+  </div>
+  <div class="prose-callout">
+    <p class="mb-1"><strong>GitHub / GitHub Pages</strong></p>
+    <p class="m-0">Our website's source, including the published Event programme, is hosted in a public GitHub repository and served via GitHub Pages. Accepted speakers' names, talk titles, and abstracts are published this way only with their separate, explicit consent (see Section 02).</p>
+  </div>
+  <div class="prose-callout">
+    <p class="mb-1"><strong>YouTube</strong></p>
+    <p class="m-0">We may publish talk recordings on YouTube after the Event, only with the speaker's explicit consent obtained ahead of recording.</p>
+  </div>
+  <div class="prose-callout">
+    <p class="mb-1"><strong>TBA</strong></p>
+    <p class="m-0">Our ticketing platform. Data submitted at checkout is governed by TBA's own privacy terms, which we encourage you to review separately.</p>
+  </div>
+  <div class="prose-callout">
+    <p class="mb-1"><strong>GoatCounter</strong></p>
+    <p class="m-0">Our website analytics tool. It doesn't collect personal data (see Section 02), so it isn't a recipient of your personal data in the sense the rest of this section describes.</p>
+  </div>
+  <div class="prose-callout">
+    <p class="mb-1"><strong>TBA</strong></p>
+    <p class="m-0">If you opt in to our newsletter, your email address is stored with our mailing list provider for that purpose alone.</p>
+  </div>
+</div>
+
+### International data transfers
+
+Zoho (Netherlands), Google (Ireland), GitHub (United States), and YouTube (United States) are located outside Turkey.
+
+Zoho and Google process the data described in Section 02 within the EU, as part of our day-to-day email and CfP intake.
+
+Publication on GitHub Pages and on YouTube only happens with your prior, specific consent (see Section 02), given after you've been told what will be published, where it will be hosted, and that the destination country doesn't currently have a KVKK adequacy decision.
+
+If you'd like more detail on how any of these transfers are safeguarded, contact us at <a href="mailto:organizers@pythonturkiye.org">organizers@pythonturkiye.org</a>.
+
+Recipients:
+- Zoho Corporation B.V., Beneluxlaan 4B, 3527 HT Utrecht, The Netherlands
+- Google Ireland Ltd, Gordon House, Barrow Street, Dublin 4, Ireland
+- GitHub, Inc., 88 Colin P. Kelly Jr. St, San Francisco, CA 94107, United States
+- YouTube, LLC, 901 Cherry Ave., San Bruno, CA 94066, United States
+
+</section>
+
+<section class="prose-section">
+
+## <span class="text-primary font-mono">05</span> How long we keep your data
+
+Most of the data described above is held on our behalf by the platforms listed in Section 04, and is retained according to their own retention policies. Anything we hold directly (for example, a list of ticket holders for check-in) is kept only for as long as needed for the purpose it was collected for, and deleted once that purpose is fulfilled, unless we're required to keep it longer by law.
+
+Code of Conduct and safety-related records are kept only for as long as needed to address the specific report and any follow-up, and are not retained beyond that without a specific reason.
+
+Dietary, accessibility, and health-related information is deleted shortly after the Event, once catering and venue logistics are finished.
+
+</section>
+
+<section class="prose-section">
+
+## <span class="text-primary font-mono">06</span> Your rights
+
+Under KVKK Article 11, you have the right to:
+
+- Learn whether we're processing your personal data, and if so, request information about it
+- Learn the purpose of processing, and whether your data is used in line with that purpose
+- Know which third parties, in Turkey or abroad, we share your data with
+- Request correction of your data if it's incomplete or inaccurate
+- Request deletion or destruction of your data where the legal grounds for processing it no longer apply, and ask us to notify any third party we shared it with of that deletion
+- Object to a decision made about you based solely on automated processing of your data
+- Claim compensation if you're harmed by unlawful processing of your data
+- Where a specific processing activity relies on your consent, withdraw that consent at any time
+
+To exercise any of these rights, contact us at <a href="mailto:organizers@pythonturkiye.org">organizers@pythonturkiye.org</a>. We'll respond within 30 days, free of charge unless the request involves a cost, in which case any fee will follow the tariff set by the Personal Data Protection Board.
+
+If you're not satisfied with our response, you can also file a complaint with Turkey's <a href="https://www.kvkk.gov.tr" target="_blank" rel="noopener noreferrer">Personal Data Protection Authority (Kişisel Verileri Koruma Kurumu)</a>.
 
 </section>
