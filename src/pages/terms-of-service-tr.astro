@@ -4,20 +4,20 @@ import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import Prose from "@components/Prose.astro";
 import { event } from "@data/event";
-import Content from "@prose/privacy-policy-tr.mdx";
+import Content from "@prose/terms-of-service-tr.mdx";
 ---
 
 <Base
-  title={`KVKK Aydınlatma Metni | ${event.name}`}
-  description={`${event.name} için KVKK Aydınlatma Metni.`}
+  title={`Hizmet Koşulları | ${event.name}`}
+  description={`${event.name} biletleri ve katılımı için Hizmet Koşulları.`}
   noindex
 >
   <Header />
   <main class="section-sm text-left pt-32">
-    <h1 class="section-heading">KVKK Aydınlatma Metni</h1>
+    <h1 class="section-heading">Hizmet Koşulları</h1>
     <Prose class="[&_strong]:font-medium">
       <div class="text-center mb-8">
-        <a href="/privacy-policy/">English</a>
+        <a href="/terms-of-service/">English</a>
       </div>
       <Content />
     </Prose>
