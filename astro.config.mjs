@@ -14,7 +14,6 @@ export default defineConfig({
     "/compact": "/compact-schedule",
     "/program": "/#schedule",
     "/organizers": "/#organizers",
-    "/cfp": "/#cfp",
     "/venue": "/#venue",
     "/coc": "/#coc",
     "/terms": "/terms-of-service",
