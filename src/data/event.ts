@@ -20,11 +20,12 @@ export const event = {
     name: "Python Türkiye",
   },
   venue: {
-    name: "StartGate",
+    name: "StartGate Istanbul",
     addressLine: "Maslak Mah. Eski Büyükdere Cad. No:21",
     district: "Sarıyer / İstanbul",
     url: "https://www.startgate.com/",
-    mapsUrl: "https://maps.google.com/?q=StartGate+Maslak+Eski+Büyükdere+Caddesi+21",
+    mapsUrl:
+      "https://maps.google.com/?q=StartGate+Maslak+Eski+Büyükdere+Caddesi+21",
   },
   cfp: {
     url: cfpUrl,
