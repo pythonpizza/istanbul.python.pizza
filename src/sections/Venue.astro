@@ -1,11 +1,38 @@
 ---
+import { Image } from "astro:assets";
 import Section from "@components/Section.astro";
 import Prose from "@components/Prose.astro";
 import VenueContent from "@prose/venue.mdx";
+import front from "@assets/venue/startgate-front.jpeg";
+import amfiWide from "@assets/venue/startgate-amfi-wide.jpeg";
+import amfiTiers from "@assets/venue/startgate-amfi-tiers.jpeg";
+import amfiLobby from "@assets/venue/startgate-amfi-lobby.jpeg";
+import terraceView from "@assets/venue/startgate-terrace-view.jpeg";
+import terraceNight from "@assets/venue/startgate-terrace-night.jpeg";
+
+const venuePhotos = [
+  { src: front, alt: "The StartGate building entrance" },
+  { src: amfiWide, alt: "The StartGate amphitheatre, seen from the entrance" },
+  { src: amfiTiers, alt: "The amphitheatre's tiered seating and stage" },
+  { src: amfiLobby, alt: "The lobby area next to the amphitheatre" },
+  { src: terraceView, alt: "View over the Maslak skyline from the terrace" },
+  { src: terraceNight, alt: "StartGate's outdoor terrace in the evening" },
+];
 ---
 
 <Section id="venue" title="Venue">
   <Prose class="text-left [&_ul]:mt-2 [&_ul]:mb-6">
     <VenueContent />
   </Prose>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-12">
+    {venuePhotos.map((photo) => (
+      <Image
+        src={photo.src}
+        alt={photo.alt}
+        width={800}
+        format="avif"
+        class="w-full block rounded-lg object-cover aspect-4/3"
+      />
+    ))}
+  </div>
 </Section>
