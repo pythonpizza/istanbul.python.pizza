@@ -35,9 +35,10 @@ const venuePhotos = [
     <VenueContent />
   </Prose>
 
-  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-12">
+  {/* Mobile: swipeable scroll-snap carousel, peeking edge hints it scrolls */}
+  <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 mt-12 sm:grid sm:grid-cols-2">
     {venuePhotos.map((photo) => (
-      <figure class="relative">
+      <figure class="relative flex-none w-5/6 snap-start sm:w-full">
         {/* alt is empty: photo.alt is rendered once below as the visible figcaption, so it's not read twice by screen readers */}
         <Image
           src={photo.src}
