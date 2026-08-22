@@ -1,12 +1,41 @@
 ---
+import { getCollection } from "astro:content";
 import { event } from "@data/event";
+
+const sponsors = await getCollection("sponsors");
 
 const schema = {
   "@context": "https://schema.org",
   "@type": "ConferenceEvent",
   name: event.name,
+  description: event.description,
   startDate: event.startDate,
+  endDate: event.endDate,
+  eventStatus: "https://schema.org/EventScheduled",
+  eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+  maximumAttendeeCapacity: event.maxAttendees,
   url: Astro.site?.href,
+  image: new URL("/social-image.jpg", Astro.site).href,
+  organizer: {
+    "@type": "Organization",
+    name: event.organizer.name,
+  },
+  sponsor: sponsors.map((s) => ({
+    "@type": "Organization",
+    name: s.data.name,
+    url: s.data.link,
+  })),
+  location: {
+    "@type": "Place",
+    name: event.venue.name,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: event.venue.addressLine,
+      addressLocality: "Sarıyer",
+      addressRegion: "İstanbul",
+      addressCountry: "TR",
+    },
+  },
   offers: {
     "@type": "Offer",
     name: "Tickets",
@@ -15,7 +44,7 @@ const schema = {
   hasSponsorshipOffer: {
     "@type": "Offer",
     name: "Sponsor Packages",
-    url: new URL("#sponsors", Astro.site).href,
+    url: new URL("/sponsors", Astro.site).href,
   },
 };
 ---
