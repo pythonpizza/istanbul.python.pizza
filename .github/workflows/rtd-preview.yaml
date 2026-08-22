@@ -1,0 +1,19 @@
+name: Read the Docs PR preview
+on:
+  pull_request_target:
+    types:
+      - opened
+  workflow_dispatch:
+
+permissions:
+  pull-requests: write
+
+jobs:
+  documentation-links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: readthedocs/actions/preview@v1.5
+        with:
+          project-slug: "python-pizza-istanbul"
+          single-version: "true"
+          single-language: "true"
