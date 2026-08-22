@@ -5,6 +5,7 @@ build:
   tools:
     nodejs: "26"
   commands:
+    - npm install -g corepack
     - corepack enable
     - pnpm install --frozen-lockfile
     - pnpm build
