@@ -1,11 +1,56 @@
 ---
+import { Image } from "astro:assets";
 import Section from "@components/Section.astro";
 import Prose from "@components/Prose.astro";
+import CtaButton from "@components/CtaButton.astro";
 import VenueContent from "@prose/venue.mdx";
+import { event } from "@data/event";
+import front from "@assets/venue/startgate-front.jpeg";
+import amfiWide from "@assets/venue/startgate-amfi-wide.jpeg";
+import amfiTiers from "@assets/venue/startgate-amfi-tiers.jpeg";
+import amfiLobby from "@assets/venue/startgate-amfi-lobby.jpeg";
+import terraceView from "@assets/venue/startgate-terrace-view.jpeg";
+import terraceNight from "@assets/venue/startgate-terrace-night.jpeg";
+
+const venuePhotos = [
+  { src: front, alt: "The StartGate building entrance" },
+  { src: amfiWide, alt: "The StartGate amphitheatre, seen from the entrance" },
+  { src: amfiTiers, alt: "The amphitheatre's tiered seating and stage" },
+  { src: amfiLobby, alt: "The lobby area next to the amphitheatre" },
+  { src: terraceView, alt: "View over the Maslak skyline from the terrace" },
+  { src: terraceNight, alt: "StartGate's outdoor terrace in the evening" },
+];
 ---
 
 <Section id="venue" title="Venue">
-  <Prose class="text-left [&_ul]:mt-2 [&_ul]:mb-6">
+  <div class="prose-banner">
+    <p class="font-mono font-medium text-lg md:text-xl">{event.venue.name}</p>
+    <p class="text-lg md:text-xl">{event.venue.addressLine}<br />{event.venue.district}</p>
+    <CtaButton href={event.venue.mapsUrl} variant="outline" class="mt-6">
+      📍 Open in Google Maps
+    </CtaButton>
+  </div>
+
+  <Prose class="prose-callout text-left [&_ul]:mt-2 [&_ul]:mb-0">
     <VenueContent />
   </Prose>
+
+  {/* Mobile: swipeable scroll-snap carousel, peeking edge hints it scrolls */}
+  <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 mt-12 sm:grid sm:grid-cols-2">
+    {venuePhotos.map((photo) => (
+      <figure class="relative flex-none w-5/6 snap-start sm:w-full">
+        {/* alt is empty: photo.alt is rendered once below as the visible figcaption, so it's not read twice by screen readers */}
+        <Image
+          src={photo.src}
+          alt=""
+          width={800}
+          format="avif"
+          class="w-full block rounded-lg object-cover aspect-4/3"
+        />
+        <figcaption class="absolute inset-x-0 bottom-0 rounded-b-lg bg-linear-to-t from-black/70 to-transparent px-4 pt-10 pb-3 text-left font-mono text-xs md:text-sm text-white">
+          {photo.alt}
+        </figcaption>
+      </figure>
+    ))}
+  </div>
 </Section>

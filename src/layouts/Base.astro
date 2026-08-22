@@ -31,6 +31,7 @@ const { title, description, ogImage, noindex = false } = Astro.props;
     {ogImage && <meta property="og:image" content={ogImage} />}
     <slot name="head" />
     <script
+      is:inline
       data-goatcounter="https://pythonpizzaistanbul.goatcounter.com/count"
       async
       src="//gc.zgo.at/count.js">

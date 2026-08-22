@@ -10,7 +10,7 @@ import Hero from "@sections/Hero.astro";
 import Sponsors from "@sections/Sponsors.astro";
 // import Schedule from "@sections/Schedule.astro";
 import Organizers from "@sections/Organizers.astro";
-// import Venue from "@sections/Venue.astro";
+import Venue from "@sections/Venue.astro";
 import AboutContent from "@prose/about.mdx";
 import CfpContent from "@prose/cfp.mdx";
 import CocContent from "@prose/coc.mdx";
@@ -50,10 +50,10 @@ const twitter = socials.find((s) => s.handle);
       <Prose><CfpContent /></Prose>
       <CtaButton href="/cfp/" class="mt-8">Read the full CFP →</CtaButton>
     </Section>
+    <Venue />
     <Sponsors />
     {/* <Schedule /> */}
     <Organizers />
-    {/* <Venue /> */}
     <Section id="coc" title="Code of Conduct">
       <Prose class="text-left [&_ul]:list-none [&_ul]:pl-0"><CocContent /></Prose>
     </Section>
