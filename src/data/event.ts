@@ -29,7 +29,7 @@ export const event = {
   },
   cfp: {
     url: cfpUrl,
-    deadlineDisplay: "Tuesday, 25 August 2026, 23:59 AoE",
+    deadlineDisplay: "Monday, 7 September 2026, 23:59 AoE",
   },
   // whatever is most important right now
   cta: { label: "Submit a talk! 🎤", href: cfpUrl },
