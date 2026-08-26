@@ -24,14 +24,23 @@ const optimizedCityBg = await getImage({
     </h1>
     <p class="hero-subtext md:text-[2.2rem]">{event.subHeading}</p>
     <p class="hero-subtext md:text-[2.2rem]">{event.whenDisplay}</p>
-    <CtaButton
-      id="hero-cta"
-      href={event.cta.href}
-      variant="outline"
-      class="mt-12 px-10 py-4 text-lg md:text-xl"
-    >
-      {event.cta.label}
-    </CtaButton>
+    <div class="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
+      <CtaButton
+        id="hero-cta"
+        href={event.cta.href}
+        variant="outline"
+        class="px-10 py-4 text-lg md:text-xl"
+      >
+        {event.cta.label}
+      </CtaButton>
+      <CtaButton
+        href={event.ticketsUrl}
+        variant="solid"
+        class="px-10 py-4 text-lg md:text-xl"
+      >
+        Get a ticket! 🎟️
+      </CtaButton>
+    </div>
   </div>
 
   <Wave />
