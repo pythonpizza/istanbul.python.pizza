@@ -14,7 +14,7 @@ export const event = {
   startDate: "2026-11-14T11:00:00+03:00",
   endDate: "2026-11-14T18:00:00+03:00",
   contactEmail: "organizers@pythonturkiye.org",
-  ticketsUrl: "#",
+  ticketsUrl: "https://kommunity.com/pythonturkiye/events/python-pizza-istanbul-4fa122d9",
   maxAttendees: 150,
   organizer: {
     name: "Python Türkiye",
