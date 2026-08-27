@@ -124,6 +124,12 @@
   .prose-banner {
     @apply bg-primary text-white rounded-lg mb-8 p-6 text-center;
   }
+  .deadline-old {
+    color: color-mix(in srgb, var(--color-text) 55%, transparent);
+    text-decoration: line-through;
+    text-decoration-color: var(--color-primary);
+    text-decoration-thickness: 2px;
+  }
 
   /* Section heading (h2 anchors) and legal page title (h1) share this look */
   .section-heading {
