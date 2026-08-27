@@ -1,7 +1,7 @@
 ---
 import Section from "@components/Section.astro";
 import Prose from "@components/Prose.astro";
-import CtaButton from "@components/CtaButton.astro";
+import Button from "@components/Button.astro";
 import ScheduleCard from "@components/ScheduleCard.astro";
 import { getScheduleData } from "@data/schedule";
 
@@ -9,7 +9,7 @@ const { sessions, speakerMap } = await getScheduleData();
 ---
 
 <Section id="schedule" title="Program">
-  <CtaButton href="/compact-agenda/" class="px-6 py-2">Compact agenda 🔗</CtaButton>
+  <Button href="/compact-agenda/" class="px-6 py-2">Compact agenda 🔗</Button>
 
   <Prose class="mt-4">
     Join us for a full day of Python talks, coffee breaks, lightning talks, and pizza.
