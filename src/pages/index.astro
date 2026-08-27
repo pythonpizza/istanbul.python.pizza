@@ -67,7 +67,7 @@ const twitter = socials.find((s) => s.handle);
   </main>
   <Footer />
 
-  <script define:vars={{ ctaIds: event.ctas.filter((cta) => cta.floating).map((cta) => cta.id) }}>
+  <script is:inline define:vars={{ ctaIds: event.ctas.filter((cta) => cta.floating).map((cta) => cta.id) }}>
     // each floating cta appears once its hero counterpart scrolls out of view
     function bindFloatingCta(heroId, floatingId) {
       const hero = document.getElementById(heroId);
