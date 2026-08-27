@@ -34,13 +34,17 @@ const twitter = socials.find((s) => s.handle);
   </Fragment>
 
   <Header />
-  <CtaButton
-    id="floating-cta"
-    href={event.cta.href}
-    class="cta-hidden fixed right-4 bottom-4 md:right-8 md:bottom-8 z-20 min-w-40 md:min-w-44 shadow-lg"
-  >
-    {event.cta.label}
-  </CtaButton>
+  <div class="fixed right-4 bottom-4 md:right-8 md:bottom-8 z-20 flex flex-col items-end gap-3">
+    {event.ctas.filter((cta) => cta.floating).map((cta) => (
+      <CtaButton
+        id={`floating-${cta.id}`}
+        href={cta.href}
+        class="cta-hidden min-w-40 md:min-w-44 shadow-lg"
+      >
+        {cta.label}
+      </CtaButton>
+    ))}
+  </div>
   <main>
     <Hero />
     <Section id="about" title={`Python Pizza is Coming to ${event.city}!`}>
@@ -63,17 +67,21 @@ const twitter = socials.find((s) => s.handle);
   </main>
   <Footer />
 
-  <script>
-    // floating cta button appears when the hero cta button is scrolled out of view
-    const heroCta = document.getElementById("hero-cta");
-    const floatingCta = document.getElementById("floating-cta");
-
-    if (heroCta && floatingCta) {
+  <script define:vars={{ ctaIds: event.ctas.filter((cta) => cta.floating).map((cta) => cta.id) }}>
+    // each floating cta appears once its hero counterpart scrolls out of view
+    function bindFloatingCta(heroId, floatingId) {
+      const hero = document.getElementById(heroId);
+      const floating = document.getElementById(floatingId);
+      if (!hero || !floating) return;
       const observer = new IntersectionObserver(
-        ([entry]) => floatingCta.classList.toggle("cta-hidden", entry.isIntersecting),
+        ([entry]) => floating.classList.toggle("cta-hidden", entry.isIntersecting),
         { threshold: 0.4 },
       );
-      observer.observe(heroCta);
+      observer.observe(hero);
+    }
+
+    for (const id of ctaIds) {
+      bindFloatingCta(`hero-${id}`, `floating-${id}`);
     }
   </script>
 </Base>

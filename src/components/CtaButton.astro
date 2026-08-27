@@ -1,10 +1,16 @@
 ---
 interface Props {
   href: string;
-  variant?: "solid" | "outline";
+  variant?: "solid" | "outline" | "inverted";
   class?: string;
   id?: string;
 }
+
+const variantClass = {
+  solid: "btn-solid",
+  outline: "btn-outline",
+  inverted: "btn-inverted",
+};
 
 const { href, variant = "solid", class: cls, id } = Astro.props;
 const external = href.startsWith("http");
@@ -15,7 +21,7 @@ const external = href.startsWith("http");
   href={href}
   target={external ? "_blank" : undefined}
   rel={external ? "noopener noreferrer" : undefined}
-  class:list={["btn", variant === "outline" ? "btn-outline" : "btn-solid", cls]}
+  class:list={["btn", variantClass[variant], cls]}
 >
   <slot />
 </a>

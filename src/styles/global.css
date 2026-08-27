@@ -186,6 +186,9 @@
   .btn-outline {
     @apply border-2 border-white bg-white/15 text-white backdrop-blur-sm hover:bg-white hover:text-primary;
   }
+  .btn-inverted {
+    @apply bg-white text-primary;
+  }
 
   .cta-hidden {
     opacity: 0;
