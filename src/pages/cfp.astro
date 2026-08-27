@@ -3,7 +3,7 @@ import Base from "@layouts/Base.astro";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import Prose from "@components/Prose.astro";
-import CtaButton from "@components/CtaButton.astro";
+import Button from "@components/Button.astro";
 import { event } from "@data/event";
 import Content from "@prose/cfp-details.mdx";
 ---
@@ -19,7 +19,7 @@ import Content from "@prose/cfp-details.mdx";
       <Content />
     </Prose>
     <div class="text-center mt-8">
-      <CtaButton href={event.cfp.url}>Submit your talk</CtaButton>
+      <Button href={event.cfp.url}>Submit your talk</Button>
     </div>
   </main>
   <Footer />

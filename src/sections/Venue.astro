@@ -2,7 +2,7 @@
 import { Image } from "astro:assets";
 import Section from "@components/Section.astro";
 import Prose from "@components/Prose.astro";
-import CtaButton from "@components/CtaButton.astro";
+import Button from "@components/Button.astro";
 import VenueContent from "@prose/venue.mdx";
 import { event } from "@data/event";
 import front from "@assets/venue/startgate-front.jpeg";
@@ -26,9 +26,9 @@ const venuePhotos = [
   <div class="prose-banner">
     <p class="font-mono font-medium text-lg md:text-xl">{event.venue.name}</p>
     <p class="text-lg md:text-xl">{event.venue.addressLine}<br />{event.venue.district}</p>
-    <CtaButton href={event.venue.mapsUrl} variant="outline" class="mt-6">
+    <Button href={event.venue.mapsUrl} variant="outline" class="mt-6">
       📍 Open in Google Maps
-    </CtaButton>
+    </Button>
   </div>
 
   <Prose class="prose-callout text-left [&_ul]:mt-2 [&_ul]:mb-0">

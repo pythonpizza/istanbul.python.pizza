@@ -1,7 +1,7 @@
 ---
 import Base from "@layouts/Base.astro";
 import Header from "@components/Header.astro";
-import CtaButton from "@components/CtaButton.astro";
+import Button from "@components/Button.astro";
 import Section from "@components/Section.astro";
 import Prose from "@components/Prose.astro";
 import Footer from "@components/Footer.astro";
@@ -36,13 +36,13 @@ const twitter = socials.find((s) => s.handle);
   <Header />
   <div class="fixed right-4 bottom-4 md:right-8 md:bottom-8 z-20 flex flex-col items-end gap-3">
     {event.ctas.filter((cta) => cta.floating).map((cta) => (
-      <CtaButton
+      <Button
         id={`floating-${cta.id}`}
         href={cta.href}
         class="cta-hidden min-w-40 md:min-w-44 shadow-lg"
       >
         {cta.label}
-      </CtaButton>
+      </Button>
     ))}
   </div>
   <main>
@@ -53,8 +53,8 @@ const twitter = socials.find((s) => s.handle);
     <Section id="cfp" title="Call for Proposals: Deadline Extended! 🎤">
       <Prose><CfpContent /></Prose>
       <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-        <CtaButton href={event.cfp.url}>Submit a talk! 🎤</CtaButton>
-        <CtaButton href="/cfp/">Read the full CFP →</CtaButton>
+        <Button href={event.cfp.url}>Submit a talk! 🎤</Button>
+        <Button href="/cfp/">Read the full CFP →</Button>
       </div>
     </Section>
     <Venue />
