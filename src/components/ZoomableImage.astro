@@ -1,0 +1,56 @@
+---
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+
+interface Props {
+  src: ImageMetadata;
+  alt: string;
+  width?: number;
+  zoomWidth?: number;
+  class?: string;
+}
+
+const { src, alt, width = 800, zoomWidth = 1600, class: cls } = Astro.props;
+const id = `zoom-${crypto.randomUUID()}`;
+---
+
+<figure class:list={["relative", cls]}>
+  {/* thumbnail img alt is the button's accessible name;
+  aria-describedby adds the zoom affordance as a separate description
+  (helps low-vision users who benefit from a larger image)
+  without duplicating the name; the visually-identical figcaption below
+  is hidden from assistive tech so it isn't announced a third time.
+  Thanks for reading this long note :D */}
+  <button popovertarget={id} aria-describedby={`${id}-hint`} class="block w-full cursor-zoom-in">
+    <Image
+      src={src}
+      alt={alt}
+      width={width}
+      format="avif"
+      class="w-full block rounded-lg object-cover aspect-4/3"
+    />
+  </button>
+  <span id={`${id}-hint`} class="sr-only">Zoom in</span>
+  <figcaption aria-hidden="true" class="absolute inset-x-0 bottom-0 rounded-b-lg bg-linear-to-t from-black/70 to-transparent px-4 pt-10 pb-3 text-left font-mono text-xs md:text-sm text-white">
+    {alt}
+  </figcaption>
+
+  <div id={id} popover class="m-auto w-fit h-fit max-w-none p-0 border-0 bg-transparent backdrop:bg-black/80">
+    <button
+      popovertarget={id}
+      popovertargetaction="hide"
+      aria-label="Close"
+      class="absolute top-3 right-3 w-9 h-9 rounded-full bg-black/70 text-white text-lg leading-none cursor-pointer"
+    >
+      ✕
+    </button>
+    <Image
+      src={src}
+      alt={alt}
+      width={zoomWidth}
+      format="avif"
+      loading="lazy"
+      class="max-h-[90dvh] max-w-[90vw] w-auto h-auto object-contain rounded-lg"
+    />
+  </div>
+</figure>
