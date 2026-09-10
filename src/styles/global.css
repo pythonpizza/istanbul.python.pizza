@@ -181,11 +181,6 @@
     @apply border-2 border-white bg-white/15 text-white backdrop-blur-sm hover:bg-white hover:text-primary;
   }
 
-  .cta-hidden {
-    opacity: 0;
-    pointer-events: none;
-  }
-
   .stripe-badge {
     background-image: linear-gradient(
       45deg,

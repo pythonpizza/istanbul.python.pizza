@@ -3,14 +3,13 @@ import Base from "@layouts/Base.astro";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import Prose from "@components/Prose.astro";
-import CtaButton from "@components/CtaButton.astro";
 import { event } from "@data/event";
 import Content from "@prose/cfp-details.mdx";
 ---
 
 <Base
   title={`Call for Proposals | ${event.name}`}
-  description={`Submit a talk for ${event.name}, ${event.whenDisplay}. All experience levels welcome.`}
+  description={`The Call for Proposals for ${event.name}, ${event.whenDisplay}, is now closed.`}
 >
   <Header />
   <main class="section-sm text-left pt-32">
@@ -18,9 +17,6 @@ import Content from "@prose/cfp-details.mdx";
     <Prose class="[&_p]:mb-4 [&_h2]:mt-10 [&_strong]:font-medium">
       <Content />
     </Prose>
-    <div class="text-center mt-8">
-      <CtaButton href={event.cfp.url}>Submit your talk</CtaButton>
-    </div>
   </main>
   <Footer />
 </Base>
