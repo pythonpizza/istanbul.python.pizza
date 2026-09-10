@@ -2,9 +2,9 @@ import { event } from "@data/event";
 import Button from "@components/Button.astro";
 
 <div class="prose-banner">
-  <p class="m-0">Deadline extended!</p>
-  <p class="m-0">Submissions now close <span class="line-through opacity-70">25 August 2026</span> {event.cfp.deadlineDisplay}.</p>
-  <Button href={event.cfp.url} variant="inverted" class="mt-6 no-underline">Submit your talk →</Button>
+  <p class="m-0">The CFP is now closed.</p>
+  <p class="m-0">Submissions closed on {event.cfp.deadlineDisplay}.</p>
+  <Button href={event.cfp.url} variant="inverted" class="mt-6 no-underline" disabled>Submissions closed</Button>
 </div>
 
 ## Everyone is welcome here

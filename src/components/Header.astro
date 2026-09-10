@@ -34,7 +34,7 @@ const optimizedCityBg = await getImage({
 
     <nav class="hidden lg:flex items-center gap-1">
       {menuItems.map(({ href, label }) => (
-        <a href={href} class="nav-link text-center whitespace-nowrap">
+        <a href={href} class="nav-link text-center whitespace-nowrap font-normal">
           {label}
         </a>
       ))}
@@ -58,7 +58,7 @@ const optimizedCityBg = await getImage({
         <li>
           <a
             href={href}
-            class="mobile-nav-link text-white text-2xl leading-tight py-2 block text-center hover:underline underline-offset-4"
+            class="mobile-nav-link text-white text-2xl leading-tight font-normal py-2 block text-center hover:underline underline-offset-4"
           >
             {label}
           </a>

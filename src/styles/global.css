@@ -189,6 +189,9 @@
   .btn-inverted {
     @apply bg-white text-primary;
   }
+  .btn-disabled {
+    @apply opacity-50 pointer-events-none cursor-not-allowed hover:translate-y-0;
+  }
 
   .cta-hidden {
     opacity: 0;

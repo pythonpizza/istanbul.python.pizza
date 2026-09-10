@@ -50,15 +50,15 @@ const twitter = socials.find((s) => s.handle);
     <Section id="about" title={`Python Pizza is Coming to ${event.city}!`}>
       <Prose><AboutContent /></Prose>
     </Section>
-    <Section id="cfp" title="Call for Proposals: Deadline Extended! 🎤">
+    <Venue />
+    <Sponsors />
+    <Section id="cfp" title="Call for Proposals: Closed 🎤">
       <Prose><CfpContent /></Prose>
       <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-        <Button href={event.cfp.url}>Submit a talk! 🎤</Button>
+        <Button href={event.cfp.url} disabled>CFP closed</Button>
         <Button href="/cfp/">Read the full CFP →</Button>
       </div>
     </Section>
-    <Venue />
-    <Sponsors />
     {/* <Schedule /> */}
     <Organizers />
     <Section id="coc" title="Code of Conduct">

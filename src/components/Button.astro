@@ -4,6 +4,7 @@ interface Props {
   variant?: "solid" | "outline" | "inverted";
   class?: string;
   id?: string;
+  disabled?: boolean;
 }
 
 const variantClass = {
@@ -12,16 +13,24 @@ const variantClass = {
   inverted: "btn-inverted",
 };
 
-const { href, variant = "solid", class: cls, id } = Astro.props;
+const {
+  href,
+  variant = "solid",
+  class: cls,
+  id,
+  disabled = false,
+} = Astro.props;
 const external = href.startsWith("http");
 ---
 
 <a
   id={id}
-  href={href}
-  target={external ? "_blank" : undefined}
-  rel={external ? "noopener noreferrer" : undefined}
-  class:list={["btn", variantClass[variant], cls]}
+  href={disabled ? undefined : href}
+  target={!disabled && external ? "_blank" : undefined}
+  rel={!disabled && external ? "noopener noreferrer" : undefined}
+  aria-disabled={disabled ? "true" : undefined}
+  tabindex={disabled ? -1 : undefined}
+  class:list={["btn", variantClass[variant], disabled && "btn-disabled", cls]}
 >
   <slot />
 </a>
