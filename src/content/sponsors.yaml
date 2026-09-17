@@ -1,8 +1,21 @@
 - id: europython-society
   name: EuroPython Society
   image: /sponsors/eps-text.png
-  link: https://www.europython-society.org/
+  link: https://www.europython-society.org
+  weight: 0
 - id: startgate
   name: StartGate
   image: /sponsors/startgate.svg
-  link: https://www.startgate.com/
+  link: https://www.startgate.com
+  weight: 10
+- id: dominos-pizza
+  name: Domino's Pizza
+  image: /sponsors/dominos-pizza.svg
+  link: https://www.dominos.com.tr/kurumsal/hakkimizda
+  weight: 20
+- id: fal
+  name: fal
+  image: /sponsors/fal.svg
+  link: https://fal.ai
+  weight: 30
+  maxHeightRem: 4
