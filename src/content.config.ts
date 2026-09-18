@@ -48,6 +48,8 @@ const sponsors = defineCollection({
     name: z.string(),
     image: z.string(),
     link: z.url(),
+    weight: z.number().default(Number.MAX_SAFE_INTEGER),
+    maxHeightRem: z.number().default(6),
   }),
 });
 

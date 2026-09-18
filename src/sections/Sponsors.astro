@@ -4,7 +4,9 @@ import Section from "@components/Section.astro";
 import Prose from "@components/Prose.astro";
 import { event } from "@data/event";
 
-const sponsors = await getCollection("sponsors");
+const sponsors = (await getCollection("sponsors")).sort(
+  (a, b) => a.data.weight - b.data.weight,
+);
 ---
 
 <Section id="sponsors" title="Sponsors" size="lg">
@@ -28,7 +30,8 @@ const sponsors = await getCollection("sponsors");
         <img
           src={s.data.image}
           alt={s.data.name}
-          class="w-full h-auto max-h-24 object-contain"
+          class="w-full h-auto object-contain"
+          style={{ maxHeight: `${s.data.maxHeightRem}rem` }}
         />
       </a>
     ))}
