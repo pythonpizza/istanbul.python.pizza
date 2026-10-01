@@ -19,3 +19,8 @@
   link: https://fal.ai
   weight: 30
   maxHeightRem: 4
+- id: bilus
+  name: Bilus Teknoloji
+  image: /sponsors/bilus.png
+  link: https://bilusteknoloji.com/en
+  weight: 40
