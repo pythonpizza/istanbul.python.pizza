@@ -19,21 +19,113 @@ const sponsors = (await getCollection("sponsors")).sort(
       </a>.
     </p>
   </Prose>
-  <div class="flex flex-wrap items-center justify-center gap-16 mt-12">
-    {sponsors.map((s) => (
-      <a
-        href={s.data.link}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="w-[calc(100vw-4rem)] sm:w-56 md:w-64 max-w-full"
-      >
-        <img
-          src={s.data.image}
-          alt={s.data.name}
-          class="w-full h-auto object-contain"
-          style={{ maxHeight: `${s.data.maxHeightRem}rem` }}
-        />
-      </a>
-    ))}
+  <div class="sponsors" style={`--n: ${sponsors.length}`}>
+    <div class="track">
+      {/* the inert second copy only exists so the mobile marquee can loop seamlessly */}
+      {[false, true].map((copy) => (
+        <div class="group" inert={copy}>
+          {sponsors.map((s) => (
+            <a href={s.data.link} target="_blank" rel="noopener noreferrer">
+              <img src={s.data.image} alt={s.data.name} style={`--h: ${s.data.maxHeightRem}rem`} />
+            </a>
+          ))}
+        </div>
+      ))}
+    </div>
   </div>
 </Section>
+
+<style>
+  .sponsors {
+    margin-top: 3rem;
+  }
+  .track {
+    display: flex;
+  }
+  .group {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+  }
+  .group[inert] {
+    display: none;
+  }
+  .group a {
+    width: 14rem;
+    max-width: 100%;
+  }
+  .group img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    max-height: var(--h);
+  }
+  @media (width >= 48rem) {
+    .group a {
+      width: 16rem;
+    }
+  }
+
+  @keyframes slide {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* mobile: one compact row, sliding only while the script sets [data-overflow] */
+  @media (width < 40rem) {
+    .sponsors {
+      margin-inline: -2rem; /* bleed past the section padding */
+      overflow-x: auto; /* reduced motion: plain swipeable row */
+    }
+    .track {
+      width: max-content;
+      margin-inline: auto; /* centered when it fits */
+    }
+    .group {
+      flex: none;
+      flex-wrap: nowrap;
+      gap: 0;
+    }
+    .group a {
+      width: auto;
+      padding-inline: 1.25rem; /* not gap: keeps both copies exactly equal width */
+    }
+    .group img {
+      width: auto;
+      height: var(--h);
+      max-width: 16rem;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .sponsors {
+        overflow: hidden;
+      }
+      [data-overflow] {
+        mask-image: linear-gradient(to right, transparent, #000 2rem, #000 calc(100% - 2rem), transparent);
+      }
+      [data-overflow] .group[inert] {
+        display: flex;
+      }
+      [data-overflow] .track {
+        animation: slide calc(var(--n) * 3s) linear infinite;
+      }
+      [data-overflow]:is(:hover, :focus-within) .track {
+        animation-play-state: paused;
+      }
+    }
+  }
+</style>
+
+<script>
+  const root = document.querySelector<HTMLElement>(".sponsors")!;
+  const group = root.querySelector<HTMLElement>(".group")!;
+  const ro = new ResizeObserver(() =>
+    root.toggleAttribute("data-overflow", group.offsetWidth > root.clientWidth),
+  );
+  ro.observe(root);
+  ro.observe(group); // logo widths are only known once images load
+</script>
