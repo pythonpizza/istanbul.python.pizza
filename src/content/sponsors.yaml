@@ -21,6 +21,7 @@
   maxHeightRem: 4
 - id: bilus
   name: Bilus Teknoloji
-  image: /sponsors/bilus.png
+  image: /sponsors/bilus.jpeg
   link: https://bilusteknoloji.com/en
   weight: 40
+  maxHeightRem: 9
