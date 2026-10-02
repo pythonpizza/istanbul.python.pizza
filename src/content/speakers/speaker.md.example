@@ -1,6 +1,9 @@
 ---
 name: Example Speaker
+tagline: One line about the speaker # optional, shown for keynotes
 image: ../../assets/speakers/example.jpg
+keynote: true # optional, shows the speaker in the homepage Keynote Speakers section
+order: 1 # optional, keynotes sort ascending, unset goes last
 links:
   - url: https://example.com
     icon: /socials/website.svg

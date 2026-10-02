@@ -1,5 +1,6 @@
 export const menuItems = [
   { href: "/#about", label: "About 🍕" },
+  { href: "/#keynotes", label: "Keynotes 🎙️" },
   { href: "/#venue", label: "Venue 🏰" },
   { href: "/#sponsors", label: "Sponsors 💛" },
   { href: "/#cfp", label: "CFP 🙋🏻‍♀️" },
