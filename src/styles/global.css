@@ -37,7 +37,7 @@
   html {
     scroll-behavior: smooth;
     /* header is fixed; keep anchor jumps clear of the floating pill */
-    scroll-padding-top: 6rem;
+    scroll-padding-top: 3rem;
   }
 
   body {
