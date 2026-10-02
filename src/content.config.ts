@@ -11,11 +11,19 @@ const linkSchema = z.object({
 const speakers = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/speakers" }),
   schema: ({ image }) =>
-    z.object({
-      name: z.string(),
-      image: image().optional(),
-      links: z.array(linkSchema).optional(),
-    }),
+    z
+      .object({
+        name: z.string(),
+        tagline: z.string().optional(),
+        image: image().optional(),
+        keynote: z.boolean().optional(),
+        order: z.number().default(Number.MAX_SAFE_INTEGER),
+        links: z.array(linkSchema).optional(),
+      })
+      .refine((s) => !s.keynote || s.image, {
+        message: "keynote speakers need an image",
+        path: ["image"],
+      }),
 });
 
 const organizers = defineCollection({
