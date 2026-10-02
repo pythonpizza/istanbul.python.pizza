@@ -18,6 +18,9 @@ export default defineConfig({
     "/coc": "/#coc",
     "/terms": "/terms-of-service",
     "/privacy": "/privacy-policy",
+    "/#keynotes": "/#keynoters",
+    "/keynotes": "/#keynoters",
+    "/keynoters": "/#keynoters",
   },
   trailingSlash: "ignore",
   build: {

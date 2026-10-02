@@ -4,14 +4,14 @@ import { Image } from "astro:assets";
 import Section from "@components/Section.astro";
 import { event } from "@data/event";
 
-const keynotes = (
+const keynoters = (
   await getCollection("speakers", ({ data }) => data.keynote)
 ).sort((a, b) => a.data.order - b.data.order);
 ---
 
-<Section id="keynotes" title="Keynote Speakers" size="lg">
+<Section id="keynoters" title="Keynote Speakers" size="lg">
   <div class="flex flex-col items-center gap-11 mt-12">
-    {keynotes.map((speaker) => (
+    {keynoters.map((speaker) => (
       <div class="w-full max-w-sm md:max-w-205 drop-shadow-[2px_10px_14px_rgba(237,67,55,0.3)] odd:-rotate-[0.8deg] even:rotate-[0.6deg]">
       <article class="ticket flex flex-col md:flex-row rounded-2xl border-2 border-primary">
         <div class="flex flex-1 flex-col md:flex-row items-center gap-3 md:gap-8 px-6 py-7 md:px-9 md:text-left">
