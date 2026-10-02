@@ -16,11 +16,11 @@ const speakers = defineCollection({
         name: z.string(),
         tagline: z.string().optional(),
         image: image().optional(),
-        keynote: z.boolean().optional(),
+        keynoter: z.boolean().optional(),
         order: z.number().default(Number.MAX_SAFE_INTEGER),
         links: z.array(linkSchema).optional(),
       })
-      .refine((s) => !s.keynote || s.image, {
+      .refine((s) => !s.keynoter || s.image, {
         message: "keynote speakers need an image",
         path: ["image"],
       }),
