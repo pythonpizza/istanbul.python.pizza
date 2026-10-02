@@ -36,6 +36,13 @@ export const event = {
   // shown together in the hero; ctas with floating: true also get a floating button once scrolled past
   ctas: [
     {
+      id: "keynotes",
+      label: "Meet our keynotes 🎙️",
+      href: "#keynotes",
+      variant: "inverted" as const,
+      floating: false,
+    },
+    {
       id: "tickets",
       label: "Get your ticket! 🎟️",
       href: ticketsUrl,
