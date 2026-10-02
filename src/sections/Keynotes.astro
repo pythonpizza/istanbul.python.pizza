@@ -1,0 +1,115 @@
+---
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+import Section from "@components/Section.astro";
+import { event } from "@data/event";
+
+const keynotes = (
+  await getCollection("speakers", ({ data }) => data.keynote)
+).sort((a, b) => a.data.order - b.data.order);
+---
+
+<Section id="keynotes" title="Keynote Speakers" size="lg">
+  <div class="flex flex-col items-center gap-11 mt-12">
+    {keynotes.map((speaker) => (
+      <div class="w-full max-w-sm md:max-w-205 drop-shadow-[2px_10px_14px_rgba(237,67,55,0.3)] odd:-rotate-[0.8deg] even:rotate-[0.6deg]">
+      <article class="ticket flex flex-col md:flex-row rounded-2xl border-2 border-primary">
+        <div class="flex flex-1 flex-col md:flex-row items-center gap-3 md:gap-8 px-6 py-7 md:px-9 md:text-left">
+          <Image
+            src={speaker.data.image!}
+            alt={`Photo of ${speaker.data.name}`}
+            width={480}
+            format="avif"
+            class="w-36 h-36 md:w-42 md:h-42 shrink-0 rounded-full object-cover avatar-shadow"
+          />
+          <div class="flex flex-col items-center md:items-start gap-2.5 min-w-0">
+            <div class="font-mono text-[13px] font-medium uppercase tracking-[0.22em] text-[#c0281d]">Keynote</div>
+            <h3 class="m-0 font-mono text-2xl md:text-3xl font-medium leading-tight">{speaker.data.name}</h3>
+            {speaker.data.tagline && (
+              <p class="m-0 text-base md:text-lg font-light leading-normal">{speaker.data.tagline}</p>
+            )}
+            <div aria-hidden="true" class="hidden md:flex gap-5 mt-1.5 font-mono text-xs uppercase tracking-wider text-[#6b6767]">
+              <span>{event.whenDisplay}</span>
+              <span>{event.subHeading}</span>
+            </div>
+          </div>
+        </div>
+
+        <div
+          aria-hidden="true"
+          class="ticket-stub flex md:flex-col items-center justify-between md:justify-center gap-3 md:gap-1.5 px-6 md:p-0 font-mono"
+        >
+          <div class="flex flex-col items-start md:items-center gap-1">
+            <span class="text-[11px] md:text-xs font-medium tracking-[0.24em]">ADMIT ONE</span>
+            <span class="text-[11px] tracking-wider text-[#6b6767] md:hidden">{event.whenDisplay}</span>
+          </div>
+          <span class="text-xl md:text-2xl font-medium leading-none tracking-[0.12em] text-primary">KEYNOTE</span>
+          <span class="ticket-barcode hidden md:block mt-2.5 w-24 h-6.5"></span>
+        </div>
+      </article>
+      </div>
+    ))}
+  </div>
+</Section>
+
+<style>
+  /* notches: the mask cuts a circle either side of the perforation, the gradients draw the arcs */
+  .ticket {
+    --stub-w: 168px;
+    --stub-h: 72px;
+    --hole: transparent 15.5px, #000 16px;
+    --arc: transparent 15.5px, var(--color-primary) 16px, var(--color-primary) 17.5px, transparent 18px;
+    --notch-a: 0 calc(100% - var(--stub-h) - 1px);
+    --notch-b: 100% calc(100% - var(--stub-h) - 1px);
+    mask-image:
+      radial-gradient(circle at var(--notch-a), var(--hole)),
+      radial-gradient(circle at var(--notch-b), var(--hole));
+    mask-composite: intersect;
+    background:
+      radial-gradient(circle at var(--notch-a), var(--arc)),
+      radial-gradient(circle at var(--notch-b), var(--arc)),
+      white;
+    background-origin: border-box;
+  }
+  .ticket-stub {
+    height: var(--stub-h);
+    border-top: 2px dashed var(--color-primary);
+    border-radius: 0 0 14px 14px;
+    background-image: linear-gradient(
+      45deg,
+      transparent 25%,
+      rgba(237, 67, 55, 0.08) 25%,
+      rgba(237, 67, 55, 0.08) 50%,
+      transparent 50%,
+      transparent 75%,
+      rgba(237, 67, 55, 0.08) 75%
+    );
+    background-size: 3rem 3rem;
+    animation: bg-stripe 2s infinite linear;
+  }
+  .ticket-barcode {
+    background-image: repeating-linear-gradient(
+      90deg,
+      #464444 0 2px,
+      transparent 2px 4px,
+      #464444 4px 5px,
+      transparent 5px 8px,
+      #464444 8px 11px,
+      transparent 11px 13px
+    );
+  }
+  @media (min-width: 48rem) {
+    .ticket {
+      --notch-a: calc(100% - var(--stub-w) - 1px) 0;
+      --notch-b: calc(100% - var(--stub-w) - 1px) 100%;
+    }
+    .ticket-stub {
+      flex-shrink: 0;
+      width: var(--stub-w);
+      height: auto;
+      border-top: 0;
+      border-left: 2px dashed var(--color-primary);
+      border-radius: 0 14px 14px 0;
+    }
+  }
+</style>

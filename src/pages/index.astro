@@ -11,6 +11,7 @@ import Sponsors from "@sections/Sponsors.astro";
 // import Schedule from "@sections/Schedule.astro";
 import Organizers from "@sections/Organizers.astro";
 import Venue from "@sections/Venue.astro";
+import Keynotes from "@sections/Keynotes.astro";
 import AboutContent from "@prose/about.mdx";
 import CfpContent from "@prose/cfp.mdx";
 import CocContent from "@prose/coc.mdx";
@@ -50,6 +51,7 @@ const twitter = socials.find((s) => s.handle);
     <Section id="about" title={`Python Pizza is Coming to ${event.city}!`}>
       <Prose><AboutContent /></Prose>
     </Section>
+    <Keynotes />
     <Venue />
     <Sponsors />
     <Section id="cfp" title="Call for Proposals: Closed 🎤">
