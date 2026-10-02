@@ -37,7 +37,7 @@ export const event = {
   ctas: [
     {
       id: "keynotes",
-      label: "Meet our keynotes 🎙️",
+      label: "Meet our keynoters 🎙️",
       href: "#keynotes",
       variant: "inverted" as const,
       floating: false,
