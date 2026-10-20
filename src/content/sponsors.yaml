@@ -25,3 +25,9 @@
   link: https://bilusteknoloji.com/en
   weight: 40
   maxHeightRem: 9
+- id: brik
+  name: Brik
+  image: /sponsors/brik.png
+  link: https://onbrik.com
+  weight: 50
+  maxHeightRem: 8
