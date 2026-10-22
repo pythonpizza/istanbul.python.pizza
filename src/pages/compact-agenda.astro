@@ -1,7 +1,7 @@
 ---
-import Base from "@layouts/Base.astro";
-import { getScheduleData, formatSessionTime } from "@data/schedule";
 import { event } from "@data/event";
+import { formatSessionTime, getScheduleData } from "@data/schedule";
+import Base from "@layouts/Base.astro";
 
 const { sessions, speakerMap } = await getScheduleData();
 

@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
-import Section from "@components/Section.astro";
 import Prose from "@components/Prose.astro";
+import Section from "@components/Section.astro";
 import { event } from "@data/event";
 
 const sponsors = (await getCollection("sponsors")).sort(

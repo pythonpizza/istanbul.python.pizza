@@ -1,9 +1,9 @@
 ---
 import { getImage } from "astro:assets";
+import cityBg from "@assets/city.jpg";
 import Button from "@components/Button.astro";
 import Wave from "@components/Wave.astro";
 import { event } from "@data/event";
-import cityBg from "@assets/city.jpg";
 
 const optimizedCityBg = await getImage({
   src: cityBg,

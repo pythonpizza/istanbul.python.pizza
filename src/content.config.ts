@@ -1,6 +1,6 @@
 import { defineCollection } from "astro:content";
-import { z } from "zod";
 import { file, glob } from "astro/loaders";
+import { z } from "zod";
 
 const linkSchema = z.object({
   url: z.url(),
