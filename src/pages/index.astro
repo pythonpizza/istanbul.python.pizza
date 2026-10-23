@@ -9,12 +9,12 @@ import { event } from "@data/event";
 import { socials } from "@data/socials";
 import Base from "@layouts/Base.astro";
 import AboutContent from "@prose/about.mdx";
-import CfpContent from "@prose/cfp.mdx";
+// import CfpContent from "@prose/cfp.mdx";
 import CocContent from "@prose/coc.mdx";
 import Hero from "@sections/Hero.astro";
 import Keynoters from "@sections/Keynoters.astro";
-// import Schedule from "@sections/Schedule.astro";
 import Organizers from "@sections/Organizers.astro";
+import Schedule from "@sections/Schedule.astro";
 import Sponsors from "@sections/Sponsors.astro";
 import Venue from "@sections/Venue.astro";
 
@@ -52,16 +52,16 @@ const twitter = socials.find((s) => s.handle);
       <Prose><AboutContent /></Prose>
     </Section>
     <Keynoters />
+    <Schedule />
     <Venue />
     <Sponsors />
-    <Section id="cfp" title="Call for Proposals: Closed 🎤">
+    {/* <Section id="cfp" title="Call for Proposals: Closed 🎤">
       <Prose><CfpContent /></Prose>
       <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
         <Button href={event.cfp.url} disabled>CFP closed</Button>
         <Button href="/cfp/">Read the full CFP →</Button>
       </div>
-    </Section>
-    {/* <Schedule /> */}
+    </Section> */}
     <Organizers />
     <Section id="coc" title="Code of Conduct">
       <Prose class="text-left [&_ul]:list-none [&_ul]:pl-0"><CocContent /></Prose>
