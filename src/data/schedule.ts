@@ -1,5 +1,5 @@
-import { getCollection, type CollectionEntry } from "astro:content";
-import { format } from "date-fns";
+import { type CollectionEntry, getCollection } from "astro:content";
+import { event } from "@data/event";
 
 export type Session = CollectionEntry<"schedule">["data"];
 export type SpeakerRecord = CollectionEntry<"speakers">["data"] & {
@@ -27,4 +27,11 @@ export async function getScheduleData() {
   return { sessions, speakerMap };
 }
 
-export const formatSessionTime = (t: string) => format(new Date(t), "HH:mm");
+const sessionTimeFormat = new Intl.DateTimeFormat("en-GB", {
+  hour: "2-digit",
+  minute: "2-digit",
+  timeZone: event.timeZone,
+});
+
+export const formatSessionTime = (t: string) =>
+  sessionTimeFormat.format(new Date(t));

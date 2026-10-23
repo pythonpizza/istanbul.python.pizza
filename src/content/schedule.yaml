@@ -12,4 +12,154 @@
 #   when: "2026-01-01T10:12:00+03:00"
 #   until: "2026-01-01T10:30:00+03:00"
 
-[]
+- id: registration
+  label: "Registration 🌻"
+  when: "2026-11-14T10:30:00+03:00"
+  until: "2026-11-14T11:00:00+03:00"
+
+- id: opening
+  label: "Opening 👋"
+  when: "2026-11-14T11:00:00+03:00"
+  until: "2026-11-14T11:15:00+03:00"
+
+- id: keynote-lysandros-nikolaou
+  title: "Keynote - TBA"
+  speakerIds: [lysandros-nikolaou]
+  when: "2026-11-14T11:15:00+03:00"
+  until: "2026-11-14T11:40:00+03:00"
+  isKeynote: true
+  language: EN
+
+- id: talk-dmitry-orlyakov
+  title: "Turning a Python Bottleneck into a Rust Module"
+  speakerIds: [dmitry-orlyakov]
+  when: "2026-11-14T11:45:00+03:00"
+  until: "2026-11-14T11:55:00+03:00"
+  language: EN
+
+- id: talk-ogulcan-dogan
+  title: "LazyTown: Sportacus Kadar Hızlı, Robbie Rotten Kadar Tembel"
+  speakerIds: [ogulcan-dogan]
+  when: "2026-11-14T11:57:00+03:00"
+  until: "2026-11-14T12:07:00+03:00"
+  language: TR
+
+- id: coffee-break-1
+  label: "Coffee Break #1 ☕️"
+  when: "2026-11-14T12:10:00+03:00"
+  until: "2026-11-14T12:30:00+03:00"
+
+- id: talk-agata-skamruk
+  title: "regex in 10 Minutes: From Cryptic Strings to Daily Superpowers"
+  speakerIds: [agata-skamruk]
+  when: "2026-11-14T12:30:00+03:00"
+  until: "2026-11-14T12:40:00+03:00"
+  language: EN
+
+- id: talk-suayip-uzulmez
+  title: "RESTful query parameters with Django"
+  speakerIds: [suayip-uzulmez]
+  when: "2026-11-14T12:42:00+03:00"
+  until: "2026-11-14T12:52:00+03:00"
+  language: EN
+
+- id: talk-ahmet-burak-ozyurt
+  title: "Python Task Queues Without the Broker"
+  speakerIds: [ahmet-burak-ozyurt]
+  when: "2026-11-14T12:54:00+03:00"
+  until: "2026-11-14T13:04:00+03:00"
+  language: EN
+
+- id: talk-erhan-bute
+  title: "From Zero to Production with FastAPI"
+  speakerIds: [erhan-bute]
+  when: "2026-11-14T13:06:00+03:00"
+  until: "2026-11-14T13:16:00+03:00"
+  language: TR
+
+- id: pizza
+  label: "Pizza time! 🍕"
+  when: "2026-11-14T13:17:00+03:00"
+  until: "2026-11-14T14:17:00+03:00"
+  isHighlight: true
+
+- id: keynote-ayse-bilge-ince
+  title: "Keynote - TBA"
+  speakerIds: [ayse-bilge-ince]
+  when: "2026-11-14T14:17:00+03:00"
+  until: "2026-11-14T14:42:00+03:00"
+  isKeynote: true
+  language: EN
+
+- id: talk-onuralp-sezer
+  title: "model.predict(): Real-Time Edge Vision with Ultralytics"
+  speakerIds: [onuralp-sezer]
+  when: "2026-11-14T14:47:00+03:00"
+  until: "2026-11-14T14:57:00+03:00"
+  language: EN
+
+- id: talk-rimantas-zukaitis
+  title: "LLM Context Profiling: what is eating up your tokens?"
+  speakerIds: [rimantas-zukaitis]
+  when: "2026-11-14T14:59:00+03:00"
+  until: "2026-11-14T15:09:00+03:00"
+  language: EN
+
+- id: talk-cheuk-ting-ho
+  title: "It talks like a human, responds like a human, but it is not a human"
+  speakerIds: [cheuk-ting-ho]
+  when: "2026-11-14T15:11:00+03:00"
+  until: "2026-11-14T15:21:00+03:00"
+  language: EN
+
+- id: coffee-break-2
+  label: "Coffee Break #2 ☕️"
+  when: "2026-11-14T15:22:00+03:00"
+  until: "2026-11-14T15:42:00+03:00"
+
+- id: talk-duhan-gunsel
+  title: "MicroPython with hardware and e-ink"
+  speakerIds: [duhan-gunsel]
+  when: "2026-11-14T15:42:00+03:00"
+  until: "2026-11-14T15:52:00+03:00"
+  language: TR
+
+- id: talk-aleksandar-milosevic
+  title: "Do You Still Need a Cluster? Rebuilding a Geospatial Stack on DuckDB"
+  speakerIds: [aleksandar-milosevic]
+  when: "2026-11-14T15:54:00+03:00"
+  until: "2026-11-14T16:04:00+03:00"
+  language: EN
+
+- id: talk-yigit-guler
+  title: "Story of PyCon Turkey"
+  speakerIds: [yigit-guler]
+  when: "2026-11-14T16:06:00+03:00"
+  until: "2026-11-14T16:20:00+03:00"
+  language: TR
+
+- id: coffee-break-3
+  label: "Coffee Break #3 ☕️"
+  when: "2026-11-14T16:20:00+03:00"
+  until: "2026-11-14T16:40:00+03:00"
+
+- id: lightning-talks
+  title: "Lightning Talks ⚡️"
+  description: "Talks submitted and picked on the day of the event! Got a project, an idea or a fun Python trick to share with the community? Bring it to the stage, 5 minutes max."
+  when: "2026-11-14T16:40:00+03:00"
+  until: "2026-11-14T17:00:00+03:00"
+
+- id: quiz
+  label: "Python Quiz with Surprise Prizes 🎁"
+  when: "2026-11-14T17:00:00+03:00"
+  until: "2026-11-14T17:15:00+03:00"
+
+- id: closing
+  label: "Closing 🎤"
+  when: "2026-11-14T17:15:00+03:00"
+  until: "2026-11-14T17:30:00+03:00"
+
+- id: last-chats
+  label: "Last chats & dinner plans 🍻"
+  when: "2026-11-14T17:30:00+03:00"
+  until: "2026-11-14T18:00:00+03:00"

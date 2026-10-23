@@ -20,7 +20,6 @@
     "astro": "^7.3.5",
     "astro-compress": "^2.4.3",
     "astro-delete-unused-images": "^1.0.3",
-    "date-fns": "^4.4.0",
     "sharp": "^0.35.5",
     "tailwindcss": "^4.3.3",
     "zod": "^4.6.5"

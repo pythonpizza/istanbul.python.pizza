@@ -1,12 +1,34 @@
 import { defineCollection } from "astro:content";
-import { z } from "zod";
 import { file, glob } from "astro/loaders";
+import { z } from "zod";
 
-const linkSchema = z.object({
-  url: z.url(),
-  icon: z.string(),
-  label: z.string(),
-});
+// icon and label for each known platform; links render in this order
+const platforms: Record<string, { icon: string; label: string }> = {
+  github: { icon: "/socials/github.svg", label: "GitHub" },
+  x: { icon: "/socials/twitter.png", label: "X" },
+  linkedin: { icon: "/socials/linkedin.png", label: "LinkedIn" },
+  mastodon: { icon: "/socials/mastodon.png", label: "Mastodon" },
+  website: { icon: "/socials/website.svg", label: "Website" },
+};
+const platformOrder = Object.keys(platforms);
+const platformRank = (key: string) => {
+  const i = platformOrder.indexOf(key.toLowerCase());
+  return i === -1 ? platformOrder.length : i;
+};
+
+// `links: { github: <url>, x: <url>, ... }` in frontmatter becomes [{ url, icon, label }];
+// any other key comes last, with the website icon and the key as its label
+const linksSchema = z.record(z.string(), z.url()).transform((links) =>
+  Object.entries(links)
+    .sort(([a], [b]) => platformRank(a) - platformRank(b))
+    .map(([key, url]) => ({
+      url,
+      ...(platforms[key.toLowerCase()] ?? {
+        icon: platforms.website.icon,
+        label: key,
+      }),
+    })),
+);
 
 const speakers = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/speakers" }),
@@ -18,7 +40,7 @@ const speakers = defineCollection({
         image: image().optional(),
         keynoter: z.boolean().optional(),
         order: z.number().default(Number.MAX_SAFE_INTEGER),
-        links: z.array(linkSchema).optional(),
+        links: linksSchema.optional(),
       })
       .refine((s) => !s.keynoter || s.image, {
         message: "keynote speakers need an image",
@@ -32,7 +54,7 @@ const organizers = defineCollection({
     z.object({
       name: z.string(),
       image: image(),
-      links: z.array(linkSchema).optional(),
+      links: linksSchema.optional(),
     }),
 });
 
@@ -43,6 +65,9 @@ const sessionSchema = z.object({
   when: z.string().optional(),
   until: z.string().optional(),
   isKeynote: z.boolean().optional(),
+  isHighlight: z.boolean().optional(),
+  description: z.string().optional(),
+  language: z.enum(["EN", "TR"]).optional(),
 });
 
 const schedule = defineCollection({

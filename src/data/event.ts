@@ -15,6 +15,8 @@ export const event = {
   whenDisplay: "Saturday, 14 November 2026",
   startDate: "2026-11-14T11:00:00+03:00",
   endDate: "2026-11-14T18:00:00+03:00",
+  // session times are always shown in this time zone
+  timeZone: "Europe/Istanbul",
   contactEmail: "organizers@pythonturkiye.org",
   ticketsUrl: ticketsUrl,
   maxAttendees: 150,
@@ -36,9 +38,9 @@ export const event = {
   // shown together in the hero; ctas with floating: true also get a floating button once scrolled past
   ctas: [
     {
-      id: "keynoters",
-      label: "Meet our keynoters 🎙️",
-      href: "#keynoters",
+      id: "schedule",
+      label: "See the schedule 📅",
+      href: "#schedule",
       variant: "inverted" as const,
       floating: false,
     },

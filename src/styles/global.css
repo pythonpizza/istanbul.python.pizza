@@ -209,6 +209,6 @@
       rgba(0, 0, 0, 0.05) 75%
     );
     background-size: 3rem 3rem;
-    animation: bg-stripe 2s infinite linear;
+    animation: bg-stripe 4s infinite linear;
   }
 }
