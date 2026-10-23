@@ -6,6 +6,7 @@ import Base from "@layouts/Base.astro";
 const { sessions, speakerMap } = await getScheduleData();
 
 const fmt = formatSessionTime;
+const languageNames = { EN: "English", TR: "Turkish" };
 const title = (s: (typeof sessions)[number]) => s.title ?? s.label ?? "";
 const speakerNames = (s: (typeof sessions)[number]) =>
   s.speakerIds
@@ -38,7 +39,7 @@ const speakerNames = (s: (typeof sessions)[number]) =>
       {sessions.length === 0 && <p class="text-center">Agenda will be announced soon.</p>}
       <ol id="agenda-list" class="list-none grid gap-2 m-0 p-0">
         {sessions.map((session, i) => {
-          const speakers = speakerNames(session);
+          const speakers = speakerNames(session) || session.description;
           const t = title(session);
           return (
             <li
@@ -50,6 +51,15 @@ const speakerNames = (s: (typeof sessions)[number]) =>
               <span class="time font-mono text-xs md:text-xs font-medium leading-tight whitespace-nowrap col-start-1 row-start-1">
                 {session.when ? fmt(session.when) : ""}
               </span>
+
+              {session.language && (
+                <span
+                  title={languageNames[session.language]}
+                  class="lang justify-self-start font-mono text-[10px] font-medium leading-none py-[.2rem] px-[.4rem] rounded-full border col-start-2 row-start-1"
+                >
+                  {session.language}
+                </span>
+              )}
 
               <div class="content min-w-0 col-span-full row-start-2">
                 {speakers && (
@@ -137,6 +147,10 @@ const speakerNames = (s: (typeof sessions)[number]) =>
   .agenda-item .time {
     color: var(--color-primary);
   }
+  .agenda-item .lang {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
   .agenda-item .badge {
     display: none;
   }
@@ -158,6 +172,10 @@ const speakerNames = (s: (typeof sessions)[number]) =>
     box-shadow: 0 0.8rem 2.4rem -1.6rem rgba(237, 67, 55, var(--glow-opacity));
   }
   .agenda-item.is-current .time {
+    color: white;
+  }
+  .agenda-item.is-current .lang {
+    border-color: white;
     color: white;
   }
   .agenda-item.is-current .badge {

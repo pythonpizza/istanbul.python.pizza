@@ -65,6 +65,9 @@ const sessionSchema = z.object({
   when: z.string().optional(),
   until: z.string().optional(),
   isKeynote: z.boolean().optional(),
+  isHighlight: z.boolean().optional(),
+  description: z.string().optional(),
+  language: z.enum(["EN", "TR"]).optional(),
 });
 
 const schedule = defineCollection({
