@@ -15,6 +15,8 @@ export const event = {
   whenDisplay: "Saturday, 14 November 2026",
   startDate: "2026-11-14T11:00:00+03:00",
   endDate: "2026-11-14T18:00:00+03:00",
+  // session times are shown in this zone, whatever the build machine's zone is
+  timeZone: "Europe/Istanbul",
   contactEmail: "organizers@pythonturkiye.org",
   ticketsUrl: ticketsUrl,
   maxAttendees: 150,
